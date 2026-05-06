@@ -1,0 +1,2222 @@
+[gd_scene format=3 uid="uid://c38oqujbfew1i"]
+
+[ext_resource type="Script" uid="uid://b4oyhf57xyrii" path="res://scripts/ui/BattleHudRoot.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://bwea5j7lshtnw" path="res://assets/ui/glass_tactics_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://syevbj5vuur6" path="res://assets/art/ui/japanese_oil_safe/oil-safe-corner.png" id="3_msohc"]
+[ext_resource type="Texture2D" uid="uid://6ccujyp8kdyy" path="res://assets/art/ui/japanese_oil_safe/oil-safe-edge-h.png" id="4_1amkr"]
+[ext_resource type="Texture2D" uid="uid://cjuvdbp0nhnj0" path="res://assets/art/ui/japanese_oil_safe/oil-safe-button-glow.png" id="5_sw7ev"]
+[ext_resource type="Texture2D" uid="uid://qpah5lt4hh6f" path="res://assets/art/ui/japanese_oil_safe/oil-safe-edge-v.png" id="6_8qns1"]
+[ext_resource type="Texture2D" uid="uid://p5afnqj6hf8o" path="res://assets/art/ui/japanese_oil_safe/oil-safe-crest.png" id="7_yml7u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykvlc"]
+bg_color = Color(0.1, 0.07, 0.045, 0.62)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.95, 0.76, 0.45, 0.22)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.03, 0.02, 0.015, 0.14)
+shadow_size = 2
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85ssq"]
+bg_color = Color(0.095, 0.066, 0.043, 0.76)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.58, 0.31, 0.36)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.03, 0.02, 0.015, 0.24)
+shadow_size = 3
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfavd"]
+bg_color = Color(0.13, 0.085, 0.048, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.62, 0.3, 0.34)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.14)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qqfr"]
+bg_color = Color(0.24, 0.16, 0.07, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9, 0.58, 0.68)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ryvj"]
+bg_color = Color(0.2, 0.13, 0.062, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.42, 0.58)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msohc"]
+bg_color = Color(0.07, 0.06, 0.052, 0.54)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.49, 0.4, 0.2)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sw7ev"]
+bg_color = Color(0.025, 0.021, 0.018, 0.76)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.68, 0.51, 0.28, 0.24)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qns1"]
+bg_color = Color(0.54, 0.18, 0.14, 0.92)
+border_color = Color(1, 0.66, 0.42, 0.28)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.018, 0.012, 0.009, 0)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yml7u"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.13, 0.085, 0.048, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.62, 0.3, 0.34)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.14)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2iosv"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.24, 0.16, 0.07, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9, 0.58, 0.68)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lcbf"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.13, 0.062, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.42, 0.58)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hvin"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.07, 0.06, 0.052, 0.54)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.49, 0.4, 0.2)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dngyk"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.13, 0.085, 0.048, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.62, 0.3, 0.34)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.14)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m7h5"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.24, 0.16, 0.07, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9, 0.58, 0.68)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28i7q"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.13, 0.062, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.42, 0.58)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2aigl"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.07, 0.06, 0.052, 0.54)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.49, 0.4, 0.2)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0q75"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.13, 0.085, 0.048, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.62, 0.3, 0.34)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.14)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_od0k2"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.24, 0.16, 0.07, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9, 0.58, 0.68)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aab3n"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.13, 0.062, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.42, 0.58)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrsg3"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.07, 0.06, 0.052, 0.54)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.49, 0.4, 0.2)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1amkr"]
+bg_color = Color(0.078, 0.055, 0.04, 0.68)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.95, 0.76, 0.45, 0.22)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.03, 0.02, 0.015, 0.18)
+shadow_size = 3
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2b007"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.13, 0.085, 0.048, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.62, 0.3, 0.34)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.14)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g24di"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.24, 0.16, 0.07, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9, 0.58, 0.68)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g487c"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.13, 0.062, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.42, 0.58)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3f7lt"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.07, 0.06, 0.052, 0.54)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.49, 0.4, 0.2)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1litb"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.13, 0.085, 0.048, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.62, 0.3, 0.34)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.14)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fncnk"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.24, 0.16, 0.07, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9, 0.58, 0.68)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_we6gk"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.2, 0.13, 0.062, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.42, 0.58)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tiup"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.07, 0.06, 0.052, 0.54)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.49, 0.4, 0.2)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmuio"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.13, 0.085, 0.048, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.62, 0.3, 0.34)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.14)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2f2j"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.24, 0.16, 0.07, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9, 0.58, 0.68)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dr8ca"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.2, 0.13, 0.062, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.42, 0.58)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0i47x"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.07, 0.06, 0.052, 0.54)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.49, 0.4, 0.2)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgk78"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.13, 0.085, 0.048, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.62, 0.3, 0.34)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.14)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_274vl"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.24, 0.16, 0.07, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9, 0.58, 0.68)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2xw7"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.2, 0.13, 0.062, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.42, 0.58)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojvcx"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.07, 0.06, 0.052, 0.54)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.49, 0.4, 0.2)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4tb4"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.13, 0.085, 0.048, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.62, 0.3, 0.34)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.14)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rr31g"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.24, 0.16, 0.07, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9, 0.58, 0.68)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5appf"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.2, 0.13, 0.062, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.42, 0.58)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vpiq"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.07, 0.06, 0.052, 0.54)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.49, 0.4, 0.2)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_534sx"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.13, 0.085, 0.048, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.62, 0.3, 0.34)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.14)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwoha"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.24, 0.16, 0.07, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9, 0.58, 0.68)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8ep1"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.13, 0.062, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.42, 0.58)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_du03c"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.07, 0.06, 0.052, 0.54)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.49, 0.4, 0.2)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[node name="BattleHudRoot" type="Control" unique_id=1283713737]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="TutorialCard" type="PanelContainer" parent="." unique_id=898553562]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ykvlc")
+
+[node name="Margin" type="MarginContainer" parent="TutorialCard" unique_id=1387444755]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 7
+
+[node name="VBox" type="VBoxContainer" parent="TutorialCard/Margin" unique_id=1400741365]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="TutorialCard/Margin/VBox" unique_id=1524911082]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TutorialCard/Margin/VBox/Header" unique_id=876021884]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.89, 0.6, 1)
+theme_override_font_sizes/font_size = 14
+text = "教程标题"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Progress" type="Label" parent="TutorialCard/Margin/VBox/Header" unique_id=1558936917]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "1/4"
+horizontal_alignment = 2
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Detail" type="Label" parent="TutorialCard/Margin/VBox" unique_id=2042410837]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "教程说明"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="OilDecorLayer" type="Control" parent="TutorialCard" unique_id=1419776785]
+z_index = 20
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OilCornerTL" type="TextureRect" parent="TutorialCard/OilDecorLayer" unique_id=1030995123]
+modulate = Color(1, 1, 1, 0.34)
+layout_mode = 1
+offset_right = 30.0
+offset_bottom = 30.0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+
+[node name="OilCornerTR" type="TextureRect" parent="TutorialCard/OilDecorLayer" unique_id=1762463115]
+modulate = Color(1, 1, 1, 0.34)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_bottom = 30.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_h = true
+
+[node name="OilCornerBL" type="TextureRect" parent="TutorialCard/OilDecorLayer" unique_id=1509862373]
+modulate = Color(1, 1, 1, 0.34)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+offset_right = 30.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_v = true
+
+[node name="OilCornerBR" type="TextureRect" parent="TutorialCard/OilDecorLayer" unique_id=567307260]
+modulate = Color(1, 1, 1, 0.34)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="OilEdgeTop" type="TextureRect" parent="TutorialCard/OilDecorLayer" unique_id=1895435053]
+modulate = Color(1, 1, 1, 0.13)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 28.0
+offset_top = 3.0
+offset_right = -28.0
+offset_bottom = 15.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("4_1amkr")
+expand_mode = 1
+
+[node name="OilEdgeBottom" type="TextureRect" parent="TutorialCard/OilDecorLayer" unique_id=1725778102]
+modulate = Color(1, 1, 1, 0.13)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -15.0
+offset_right = -28.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_1amkr")
+expand_mode = 1
+
+[node name="ObjectiveCard" type="PanelContainer" parent="." unique_id=786121239]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ykvlc")
+
+[node name="Margin" type="MarginContainer" parent="ObjectiveCard" unique_id=1766357171]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 8
+
+[node name="Message" type="Label" parent="ObjectiveCard/Margin" unique_id=1553323087]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "目标提示"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="OilDecorLayer" type="Control" parent="ObjectiveCard" unique_id=1246106536]
+z_index = 20
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OilCornerTL" type="TextureRect" parent="ObjectiveCard/OilDecorLayer" unique_id=1200625061]
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 1
+offset_right = 30.0
+offset_bottom = 30.0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+
+[node name="OilCornerTR" type="TextureRect" parent="ObjectiveCard/OilDecorLayer" unique_id=1774231235]
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_bottom = 30.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_h = true
+
+[node name="OilCornerBL" type="TextureRect" parent="ObjectiveCard/OilDecorLayer" unique_id=190201250]
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+offset_right = 30.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_v = true
+
+[node name="OilCornerBR" type="TextureRect" parent="ObjectiveCard/OilDecorLayer" unique_id=1277195649]
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="OilEdgeTop" type="TextureRect" parent="ObjectiveCard/OilDecorLayer" unique_id=315168215]
+modulate = Color(1, 1, 1, 0.11)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 28.0
+offset_top = 3.0
+offset_right = -28.0
+offset_bottom = 15.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("4_1amkr")
+expand_mode = 1
+
+[node name="OilEdgeBottom" type="TextureRect" parent="ObjectiveCard/OilDecorLayer" unique_id=1421184110]
+modulate = Color(1, 1, 1, 0.11)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -15.0
+offset_right = -28.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_1amkr")
+expand_mode = 1
+
+[node name="BannerCard" type="PanelContainer" parent="." unique_id=607993998]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ykvlc")
+
+[node name="Margin" type="MarginContainer" parent="BannerCard" unique_id=66491512]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 5
+
+[node name="Message" type="Label" parent="BannerCard/Margin" unique_id=1603830683]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 11
+text = "横幅提示"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="FeedbackStack" type="VBoxContainer" parent="." unique_id=929371014]
+layout_mode = 0
+theme_override_constants/separation = 6
+
+[node name="FeedbackCard1" type="PanelContainer" parent="FeedbackStack" unique_id=385611059]
+custom_minimum_size = Vector2(330, 46)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ykvlc")
+
+[node name="Margin" type="MarginContainer" parent="FeedbackStack/FeedbackCard1" unique_id=1474587803]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 7
+
+[node name="VBox" type="VBoxContainer" parent="FeedbackStack/FeedbackCard1/Margin" unique_id=1657875057]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="FeedbackStack/FeedbackCard1/Margin/VBox" unique_id=185935577]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.89, 0.6, 1)
+theme_override_font_sizes/font_size = 15
+text = "提示标题"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Detail" type="Label" parent="FeedbackStack/FeedbackCard1/Margin/VBox" unique_id=4237466]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "提示说明"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="FeedbackCard2" type="PanelContainer" parent="FeedbackStack" unique_id=1375903737]
+custom_minimum_size = Vector2(330, 46)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ykvlc")
+
+[node name="Margin" type="MarginContainer" parent="FeedbackStack/FeedbackCard2" unique_id=310874704]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 7
+
+[node name="VBox" type="VBoxContainer" parent="FeedbackStack/FeedbackCard2/Margin" unique_id=1345728067]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="FeedbackStack/FeedbackCard2/Margin/VBox" unique_id=1606778375]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.89, 0.6, 1)
+theme_override_font_sizes/font_size = 15
+text = "提示标题"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Detail" type="Label" parent="FeedbackStack/FeedbackCard2/Margin/VBox" unique_id=1481042095]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "提示说明"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="FeedbackCard3" type="PanelContainer" parent="FeedbackStack" unique_id=398803420]
+custom_minimum_size = Vector2(330, 46)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ykvlc")
+
+[node name="Margin" type="MarginContainer" parent="FeedbackStack/FeedbackCard3" unique_id=342881693]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 7
+
+[node name="VBox" type="VBoxContainer" parent="FeedbackStack/FeedbackCard3/Margin" unique_id=1777895312]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="FeedbackStack/FeedbackCard3/Margin/VBox" unique_id=153689120]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.89, 0.6, 1)
+theme_override_font_sizes/font_size = 15
+text = "提示标题"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Detail" type="Label" parent="FeedbackStack/FeedbackCard3/Margin/VBox" unique_id=1185064452]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "提示说明"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="SidebarPanel" type="PanelContainer" parent="." unique_id=931984070]
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_85ssq")
+
+[node name="Wash" type="ColorRect" parent="SidebarPanel" unique_id=1393506770]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.19, 0.13, 0.075, 0.1)
+
+[node name="Margin" type="MarginContainer" parent="SidebarPanel" unique_id=1199951909]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="SidebarPanel/Margin" unique_id=2007451386]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Header" type="VBoxContainer" parent="SidebarPanel/Margin/VBox" unique_id=2121483676]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="TitleBlock" type="VBoxContainer" parent="SidebarPanel/Margin/VBox/Header" unique_id=1168913759]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="SidebarPanel/Margin/VBox/Header/TitleBlock" unique_id=61822626]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.89, 0.6, 1)
+theme_override_font_sizes/font_size = 15
+text = "战术面板"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Subtitle" type="Label" parent="SidebarPanel/Margin/VBox/Header/TitleBlock" unique_id=145543527]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "第 1 战"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="BadgeRow" type="HBoxContainer" parent="SidebarPanel/Margin/VBox/Header" unique_id=1470236338]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TurnBadge" type="Label" parent="SidebarPanel/Margin/VBox/Header/BadgeRow" unique_id=1589904425]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "回合 1"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="PhaseBadge" type="Label" parent="SidebarPanel/Margin/VBox/Header/BadgeRow" unique_id=1167710087]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "我方行动"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="HeaderLine" type="ColorRect" parent="SidebarPanel/Margin/VBox" unique_id=618967844]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.95, 0.72, 0.36, 0.2)
+
+[node name="CharacterSection" type="VBoxContainer" parent="SidebarPanel/Margin/VBox" unique_id=1560925710]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Header" type="HBoxContainer" parent="SidebarPanel/Margin/VBox/CharacterSection" unique_id=224868630]
+layout_mode = 2
+
+[node name="SectionTitle" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Header" unique_id=1321486563]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "单位"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="NavRow" type="HBoxContainer" parent="SidebarPanel/Margin/VBox/CharacterSection/Header" unique_id=1901446888]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PrevCharacter" type="Button" parent="SidebarPanel/Margin/VBox/CharacterSection/Header/NavRow" unique_id=935886520]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_hfavd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2qqfr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4ryvj")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_msohc")
+text = "<"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="CharacterIndex" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Header/NavRow" unique_id=445501025]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "1/3"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="NextCharacter" type="Button" parent="SidebarPanel/Margin/VBox/CharacterSection/Header/NavRow" unique_id=1987865936]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_hfavd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2qqfr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4ryvj")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_msohc")
+text = ">"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="Body" type="HBoxContainer" parent="SidebarPanel/Margin/VBox/CharacterSection" unique_id=2113369873]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PortraitSlot" type="VBoxContainer" parent="SidebarPanel/Margin/VBox/CharacterSection/Body" unique_id=2071129996]
+custom_minimum_size = Vector2(62, 0)
+layout_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="SidebarPanel/Margin/VBox/CharacterSection/Body/PortraitSlot" unique_id=1836751958]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PortraitStatus" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Body/PortraitSlot" unique_id=835680746]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "可行动"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Info" type="VBoxContainer" parent="SidebarPanel/Margin/VBox/CharacterSection/Body" unique_id=876320119]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="Name" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Body/Info" unique_id=263077404]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "阿斯特拉"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Class" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Body/Info" unique_id=544713369]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "苍纹剑士 Lv1"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="HpBlock" type="VBoxContainer" parent="SidebarPanel/Margin/VBox/CharacterSection/Body/Info" unique_id=2084496920]
+layout_mode = 2
+
+[node name="HpBar" type="ProgressBar" parent="SidebarPanel/Margin/VBox/CharacterSection/Body/Info/HpBlock" unique_id=1276797024]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_sw7ev")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8qns1")
+max_value = 42.0
+value = 42.0
+show_percentage = false
+
+[node name="HpLabel" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Body/Info/HpBlock" unique_id=1938975987]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "42/42"
+horizontal_alignment = 2
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Stats" type="HBoxContainer" parent="SidebarPanel/Margin/VBox/CharacterSection" unique_id=187276479]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PowerChip" type="VBoxContainer" parent="SidebarPanel/Margin/VBox/CharacterSection/Stats" unique_id=807521409]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Stats/PowerChip" unique_id=66140076]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "力"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Stats/PowerChip" unique_id=1629010971]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.76, 0.45, 1)
+theme_override_font_sizes/font_size = 14
+text = "7"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="MoveChip" type="VBoxContainer" parent="SidebarPanel/Margin/VBox/CharacterSection/Stats" unique_id=119553160]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Stats/MoveChip" unique_id=416627008]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "移"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Stats/MoveChip" unique_id=1143932746]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.76, 0.45, 1)
+theme_override_font_sizes/font_size = 14
+text = "3"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="BlockChip" type="VBoxContainer" parent="SidebarPanel/Margin/VBox/CharacterSection/Stats" unique_id=1826621699]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Stats/BlockChip" unique_id=564866641]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "挡"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="SidebarPanel/Margin/VBox/CharacterSection/Stats/BlockChip" unique_id=74260804]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.76, 0.45, 1)
+theme_override_font_sizes/font_size = 14
+text = "0"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="CharacterLine" type="ColorRect" parent="SidebarPanel/Margin/VBox" unique_id=818981666]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.95, 0.72, 0.36, 0.14)
+
+[node name="MissionSection" type="VBoxContainer" parent="SidebarPanel/Margin/VBox" unique_id=1575015024]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SectionTitle" type="Label" parent="SidebarPanel/Margin/VBox/MissionSection" unique_id=292590104]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "目标"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Summary" type="Label" parent="SidebarPanel/Margin/VBox/MissionSection" unique_id=677394502]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "目标：击破所有敌人"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Failure" type="Label" parent="SidebarPanel/Margin/VBox/MissionSection" unique_id=1487578184]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "失败：全队倒下"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Metrics" type="HBoxContainer" parent="SidebarPanel/Margin/VBox/MissionSection" unique_id=1048906531]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="KillChip" type="VBoxContainer" parent="SidebarPanel/Margin/VBox/MissionSection/Metrics" unique_id=556425751]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="SidebarPanel/Margin/VBox/MissionSection/Metrics/KillChip" unique_id=1545209485]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "击破"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="SidebarPanel/Margin/VBox/MissionSection/Metrics/KillChip" unique_id=94312363]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.76, 0.45, 1)
+theme_override_font_sizes/font_size = 14
+text = "0"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="DamageChip" type="VBoxContainer" parent="SidebarPanel/Margin/VBox/MissionSection/Metrics" unique_id=737995737]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="SidebarPanel/Margin/VBox/MissionSection/Metrics/DamageChip" unique_id=1642478697]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "受伤"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Value" type="Label" parent="SidebarPanel/Margin/VBox/MissionSection/Metrics/DamageChip" unique_id=537919132]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.76, 0.45, 1)
+theme_override_font_sizes/font_size = 14
+text = "0"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="MissionLine" type="ColorRect" parent="SidebarPanel/Margin/VBox" unique_id=1563535455]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.95, 0.72, 0.36, 0.12)
+
+[node name="LogSection" type="VBoxContainer" parent="SidebarPanel/Margin/VBox" unique_id=1704413645]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Header" type="HBoxContainer" parent="SidebarPanel/Margin/VBox/LogSection" unique_id=2029442673]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="SidebarPanel/Margin/VBox/LogSection/Header" unique_id=290433939]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.89, 0.6, 1)
+theme_override_font_sizes/font_size = 15
+text = "提示"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="ToggleLog" type="Button" parent="SidebarPanel/Margin/VBox/LogSection/Header" unique_id=837687927]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_hfavd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2qqfr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4ryvj")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_msohc")
+text = "展开"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="Body" type="RichTextLabel" parent="SidebarPanel/Margin/VBox/LogSection" unique_id=1430928589]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.86, 0.81, 0.7, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "选择单位后显示提示。"
+scroll_active = false
+
+[node name="LogLine" type="ColorRect" parent="SidebarPanel/Margin/VBox" unique_id=769487258]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.95, 0.72, 0.36, 0.1)
+
+[node name="Footer" type="HBoxContainer" parent="SidebarPanel/Margin/VBox" unique_id=1799534406]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="EndTurn" type="Button" parent="SidebarPanel/Margin/VBox/Footer" unique_id=891300637]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_yml7u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2iosv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3lcbf")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8hvin")
+text = "结束回合"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="OilButtonGlow" type="TextureRect" parent="SidebarPanel/Margin/VBox/Footer/EndTurn" unique_id=97179701]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_sw7ev")
+expand_mode = 1
+
+[node name="UndoMove" type="Button" parent="SidebarPanel/Margin/VBox/Footer" unique_id=2033164420]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_dngyk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4m7h5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28i7q")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2aigl")
+text = "撤回"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="OilButtonGlow" type="TextureRect" parent="SidebarPanel/Margin/VBox/Footer/UndoMove" unique_id=1999015667]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_sw7ev")
+expand_mode = 1
+
+[node name="RestartRun" type="Button" parent="SidebarPanel/Margin/VBox/Footer" unique_id=1431966265]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_b0q75")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_od0k2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aab3n")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mrsg3")
+text = "重开"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="OilButtonGlow" type="TextureRect" parent="SidebarPanel/Margin/VBox/Footer/RestartRun" unique_id=1625298942]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_sw7ev")
+expand_mode = 1
+
+[node name="OilDecorLayer" type="Control" parent="SidebarPanel" unique_id=2009291632]
+z_index = 20
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OilCornerTL" type="TextureRect" parent="SidebarPanel/OilDecorLayer" unique_id=1942393811]
+modulate = Color(1, 1, 1, 0.34)
+layout_mode = 1
+offset_right = 42.0
+offset_bottom = 42.0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+
+[node name="OilCornerTR" type="TextureRect" parent="SidebarPanel/OilDecorLayer" unique_id=1843421434]
+modulate = Color(1, 1, 1, 0.34)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_bottom = 42.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_h = true
+
+[node name="OilCornerBL" type="TextureRect" parent="SidebarPanel/OilDecorLayer" unique_id=446978405]
+modulate = Color(1, 1, 1, 0.34)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 42.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_v = true
+
+[node name="OilCornerBR" type="TextureRect" parent="SidebarPanel/OilDecorLayer" unique_id=4836929]
+modulate = Color(1, 1, 1, 0.34)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="OilEdgeTop" type="TextureRect" parent="SidebarPanel/OilDecorLayer" unique_id=1243100105]
+modulate = Color(1, 1, 1, 0.13)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 42.0
+offset_top = 3.0
+offset_right = -42.0
+offset_bottom = 19.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("4_1amkr")
+expand_mode = 1
+
+[node name="OilEdgeBottom" type="TextureRect" parent="SidebarPanel/OilDecorLayer" unique_id=143308336]
+modulate = Color(1, 1, 1, 0.13)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -19.0
+offset_right = -42.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_1amkr")
+expand_mode = 1
+
+[node name="OilEdgeLeft" type="TextureRect" parent="SidebarPanel/OilDecorLayer" unique_id=2039148674]
+modulate = Color(1, 1, 1, 0.13)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 42.0
+offset_right = 19.0
+offset_bottom = -42.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_8qns1")
+expand_mode = 1
+
+[node name="OilEdgeRight" type="TextureRect" parent="SidebarPanel/OilDecorLayer" unique_id=1963673501]
+modulate = Color(1, 1, 1, 0.13)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = 42.0
+offset_right = -3.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_8qns1")
+expand_mode = 1
+
+[node name="OilCrest" type="TextureRect" parent="SidebarPanel/OilDecorLayer" unique_id=2136366685]
+modulate = Color(1, 1, 1, 0.28)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -17.0
+offset_top = 4.0
+offset_right = 17.0
+offset_bottom = 38.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("7_yml7u")
+expand_mode = 1
+
+[node name="SkillDock" type="PanelContainer" parent="." unique_id=255337090]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 544.0
+offset_right = 1082.0
+offset_bottom = 723.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1amkr")
+
+[node name="Wash" type="ColorRect" parent="SkillDock" unique_id=2101014009]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.21, 0.13, 0.065, 0.1)
+
+[node name="Margin" type="MarginContainer" parent="SkillDock" unique_id=1666324485]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 13
+
+[node name="VBox" type="VBoxContainer" parent="SkillDock/Margin" unique_id=70249151]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Header" type="HBoxContainer" parent="SkillDock/Margin/VBox" unique_id=1652618428]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="SkillDock/Margin/VBox/Header" unique_id=1704683976]
+custom_minimum_size = Vector2(116, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.89, 0.6, 1)
+theme_override_font_sizes/font_size = 15
+text = "技能"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Note" type="Label" parent="SkillDock/Margin/VBox/Header" unique_id=182508881]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "选择单位后显示当前技能。"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Status" type="Label" parent="SkillDock/Margin/VBox/Header" unique_id=394974757]
+custom_minimum_size = Vector2(92, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "0 个技能"
+horizontal_alignment = 2
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="SkillRow" type="HBoxContainer" parent="SkillDock/Margin/VBox" unique_id=1513668222]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PrevPage" type="Button" parent="SkillDock/Margin/VBox/SkillRow" unique_id=553557129]
+custom_minimum_size = Vector2(28, 58)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_2b007")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g24di")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g487c")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3f7lt")
+text = "<"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="Cards" type="HBoxContainer" parent="SkillDock/Margin/VBox/SkillRow" unique_id=171745288]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="SkillButton1" type="Button" parent="SkillDock/Margin/VBox/SkillRow/Cards" unique_id=1603282139]
+custom_minimum_size = Vector2(208, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_constants/h_separation = 4
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_1litb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fncnk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_we6gk")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2tiup")
+text = "技能 1"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="OilButtonGlow" type="TextureRect" parent="SkillDock/Margin/VBox/SkillRow/Cards/SkillButton1" unique_id=1631617349]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_sw7ev")
+expand_mode = 1
+
+[node name="SkillButton2" type="Button" parent="SkillDock/Margin/VBox/SkillRow/Cards" unique_id=1821442277]
+custom_minimum_size = Vector2(208, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_constants/h_separation = 4
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_dmuio")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d2f2j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dr8ca")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0i47x")
+text = "技能 2"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="OilButtonGlow" type="TextureRect" parent="SkillDock/Margin/VBox/SkillRow/Cards/SkillButton2" unique_id=1598726607]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_sw7ev")
+expand_mode = 1
+
+[node name="SkillButton3" type="Button" parent="SkillDock/Margin/VBox/SkillRow/Cards" unique_id=615930338]
+custom_minimum_size = Vector2(208, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_constants/h_separation = 4
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_dgk78")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_274vl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n2xw7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ojvcx")
+text = "技能 3"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="OilButtonGlow" type="TextureRect" parent="SkillDock/Margin/VBox/SkillRow/Cards/SkillButton3" unique_id=13267367]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_sw7ev")
+expand_mode = 1
+
+[node name="SkillButton4" type="Button" parent="SkillDock/Margin/VBox/SkillRow/Cards" unique_id=1753553123]
+custom_minimum_size = Vector2(208, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_constants/h_separation = 4
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_u4tb4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rr31g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5appf")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8vpiq")
+text = "技能 4"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="OilButtonGlow" type="TextureRect" parent="SkillDock/Margin/VBox/SkillRow/Cards/SkillButton4" unique_id=812868966]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_sw7ev")
+expand_mode = 1
+
+[node name="NextPage" type="Button" parent="SkillDock/Margin/VBox/SkillRow" unique_id=15297417]
+custom_minimum_size = Vector2(28, 58)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_534sx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hwoha")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n8ep1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_du03c")
+text = ">"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="PageInfo" type="Label" parent="SkillDock/Margin/VBox" unique_id=1645011454]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "1/1"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="OilDecorLayer" type="Control" parent="SkillDock" unique_id=2109729319]
+z_index = 20
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OilCornerTL" type="TextureRect" parent="SkillDock/OilDecorLayer" unique_id=1930894087]
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+
+[node name="OilCornerTR" type="TextureRect" parent="SkillDock/OilDecorLayer" unique_id=1184371034]
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_h = true
+
+[node name="OilCornerBL" type="TextureRect" parent="SkillDock/OilDecorLayer" unique_id=816892030]
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_v = true
+
+[node name="OilCornerBR" type="TextureRect" parent="SkillDock/OilDecorLayer" unique_id=1943543919]
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_msohc")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="OilEdgeTop" type="TextureRect" parent="SkillDock/OilDecorLayer" unique_id=1156548165]
+modulate = Color(1, 1, 1, 0.11)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 42.0
+offset_top = 3.0
+offset_right = -42.0
+offset_bottom = 17.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("4_1amkr")
+expand_mode = 1
+
+[node name="OilEdgeBottom" type="TextureRect" parent="SkillDock/OilDecorLayer" unique_id=165268071]
+modulate = Color(1, 1, 1, 0.11)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -17.0
+offset_right = -42.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_1amkr")
+expand_mode = 1
+
+[node name="OilCrest" type="TextureRect" parent="SkillDock/OilDecorLayer" unique_id=599090723]
+modulate = Color(1, 1, 1, 0.22)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = 4.0
+offset_right = 16.0
+offset_bottom = 36.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("7_yml7u")
+expand_mode = 1

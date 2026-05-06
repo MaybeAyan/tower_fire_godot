@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://c130vurkpewdk"]
 
-[ext_resource type="Script" path="res://scripts/Main.gd" id="1_main"]
+[ext_resource type="Script" uid="uid://y4gr8vn8y4gf" path="res://scripts/Main.gd" id="1_main"]
+[ext_resource type="Script" uid="uid://d0ry6sd5dya31" path="res://scripts/views/BoardLayer.gd" id="2_board"]
+[ext_resource type="Script" uid="uid://dl8mntkldsjff" path="res://scripts/views/SidebarLayer.gd" id="3_sidebar"]
+[ext_resource type="Script" uid="uid://j8plx8stmk12" path="res://scripts/views/HandLayer.gd" id="4_hand"]
+[ext_resource type="Script" uid="uid://blhosuhdkvly3" path="res://scripts/views/OverlayLayer.gd" id="5_overlay"]
+[ext_resource type="Script" uid="uid://06qiw80hx3sv" path="res://scripts/views/VfxLayer.gd" id="6_vfx"]
+[ext_resource type="Script" uid="uid://buyqnwybj61g0" path="res://scripts/views/MountedUiLayer.gd" id="7_mounted"]
+[ext_resource type="Script" uid="uid://corloeqs6yvh4" path="res://scripts/views/BattlefieldLayer.gd" id="8_battlefield"]
+[ext_resource type="Script" uid="uid://dm7wsyjvtver8" path="res://scripts/views/TerrainTileMapLayer.gd" id="9_terrain_tilemap"]
+[ext_resource type="TileSet" uid="uid://d3xr0y6b7nm6u" path="res://assets/tile_sets/forest_tactical_tileset.tres" id="10_forest_tileset"]
+[ext_resource type="Script" uid="uid://bmdv2o0ae8w68" path="res://scripts/views/BattlefieldBackdropLayer.gd" id="11_backdrop"]
+[ext_resource type="Script" uid="uid://de47ef8mb1m70" path="res://scripts/views/SideCombatLayer.gd" id="12_side_combat"]
+[ext_resource type="PackedScene" uid="uid://c38oqujbfew1i" path="res://scenes/ui/BattleHudRoot.tscn" id="13_battle_hud"]
+[ext_resource type="PackedScene" uid="uid://6ua0cnwacx8k" path="res://scenes/ui/BattleOverlayRoot.tscn" id="14_battle_overlay"]
+[ext_resource type="PackedScene" path="res://scenes/ui/ChapterFlowRoot.tscn" id="15_chapter_flow"]
+[ext_resource type="Script" path="res://scripts/views/BattleAtmosphereLayer.gd" id="16_atmosphere"]
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" unique_id=222828445]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,3 +25,166 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_main")
+
+[node name="BattlefieldBackdropLayer" type="TextureRect" parent="." unique_id=1542751885]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("11_backdrop")
+
+[node name="BattleAtmosphereLayer" type="Control" parent="." unique_id=812491643]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("16_atmosphere")
+
+[node name="BattlefieldLayer" type="Control" parent="." unique_id=1229808986]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_battlefield")
+
+[node name="TerrainTileMapLayer" type="TileMapLayer" parent="." unique_id=1110029804]
+visible = false
+texture_filter = 1
+tile_set = ExtResource("10_forest_tileset")
+script = ExtResource("9_terrain_tilemap")
+
+[node name="BoardLayer" type="Control" parent="." unique_id=1521599453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_board")
+draw_battlefield_background = false
+draw_board_frame = false
+unit_base_radius_ratio = 0.27
+unit_sprite_y_ratio = 0.7
+
+[node name="MountedUiLayer" type="Control" parent="." unique_id=520305738]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_mounted")
+
+[node name="BoardBackdrop" type="ColorRect" parent="MountedUiLayer" unique_id=90040638]
+layout_mode = 0
+mouse_filter = 2
+color = Color(0.0117647, 0.0313726, 0.0784314, 0.36)
+
+[node name="SidebarPanelMount" type="TextureRect" parent="MountedUiLayer" unique_id=1394824412]
+layout_mode = 0
+mouse_filter = 2
+expand_mode = 1
+
+[node name="CommandDockMount" type="TextureRect" parent="MountedUiLayer" unique_id=1053592302]
+layout_mode = 0
+mouse_filter = 2
+expand_mode = 1
+
+[node name="DialogueFrameMount" type="TextureRect" parent="MountedUiLayer" unique_id=1316347950]
+layout_mode = 0
+mouse_filter = 2
+expand_mode = 1
+
+[node name="UiCanvas" type="Control" parent="." unique_id=117811932]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BattleHudRoot" parent="UiCanvas" unique_id=125154779 instance=ExtResource("13_battle_hud")]
+layout_mode = 1
+
+[node name="BattleOverlayRoot" parent="UiCanvas" unique_id=1912748132 instance=ExtResource("14_battle_overlay")]
+layout_mode = 1
+
+[node name="ChapterFlowRoot" parent="UiCanvas" unique_id=1229175029 instance=ExtResource("15_chapter_flow")]
+layout_mode = 1
+
+[node name="VfxLayer" type="Control" parent="." unique_id=2031901573]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_vfx")
+tile_anchor_ratio = 0.86
+text_offset = Vector2(0, 0)
+
+[node name="AnchorOffsets" type="Node2D" parent="VfxLayer" unique_id=1802467763]
+
+[node name="HitBottom" type="Marker2D" parent="VfxLayer/AnchorOffsets" unique_id=89005394]
+position = Vector2(0, 6)
+
+[node name="HealBottom" type="Marker2D" parent="VfxLayer/AnchorOffsets" unique_id=719184507]
+position = Vector2(0, 4)
+
+[node name="GuardBottom" type="Marker2D" parent="VfxLayer/AnchorOffsets" unique_id=1151374367]
+position = Vector2(0, 8)
+
+[node name="SideCombatLayer" type="Control" parent="." unique_id=1603494021]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("12_side_combat")
+
+[node name="SidebarLayer" type="Control" parent="." unique_id=399545890]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_sidebar")
+
+[node name="HandLayer" type="Control" parent="." unique_id=415885669]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_hand")
+
+[node name="OverlayLayer" type="Control" parent="." unique_id=764275515]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_overlay")

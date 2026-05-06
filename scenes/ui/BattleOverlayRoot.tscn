@@ -1,0 +1,1546 @@
+[gd_scene format=3 uid="uid://6ua0cnwacx8k"]
+
+[ext_resource type="Script" uid="uid://dbq2ld5enw100" path="res://scripts/ui/BattleOverlayRoot.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://bwea5j7lshtnw" path="res://assets/ui/glass_tactics_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://syevbj5vuur6" path="res://assets/art/ui/japanese_oil_safe/oil-safe-corner.png" id="3_8veou"]
+[ext_resource type="Texture2D" uid="uid://6ccujyp8kdyy" path="res://assets/art/ui/japanese_oil_safe/oil-safe-edge-h.png" id="4_hcofv"]
+[ext_resource type="Texture2D" uid="uid://qpah5lt4hh6f" path="res://assets/art/ui/japanese_oil_safe/oil-safe-edge-v.png" id="5_5dmr2"]
+[ext_resource type="Texture2D" uid="uid://p5afnqj6hf8o" path="res://assets/art/ui/japanese_oil_safe/oil-safe-crest.png" id="6_idg8k"]
+[ext_resource type="Texture2D" uid="uid://cjuvdbp0nhnj0" path="res://assets/art/ui/japanese_oil_safe/oil-safe-button-glow.png" id="7_2635f"]
+[ext_resource type="Texture2D" uid="uid://bv4ryi34gcqsh" path="res://assets/art/ui/japanese_oil_safe/reward-card-idle.png" id="8_idg8k"]
+[ext_resource type="Texture2D" uid="uid://dekhtbk7t37ye" path="res://assets/art/ui/japanese_oil_safe/reward-card-selected.png" id="9_2635f"]
+[ext_resource type="Texture2D" uid="uid://u554nefjsgrq" path="res://assets/art/ui/japanese_oil_safe/reward-card-hover.png" id="10_0dldq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43dix"]
+bg_color = Color(0.075, 0.052, 0.038, 0.82)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.98, 0.78, 0.42, 0.42)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.03, 0.02, 0.015, 0.34)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uo4tx"]
+bg_color = Color(0.105, 0.071, 0.046, 0.88)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.86, 0.65, 0.34, 0.5)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.03, 0.02, 0.015, 0.36)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v31un"]
+bg_color = Color(0.04, 0.036, 0.032, 0.56)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.95, 0.76, 0.45, 0.2)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.03, 0.02, 0.015, 0.12)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfqps"]
+bg_color = Color(0.13, 0.085, 0.048, 0.88)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.62, 0.3, 0.34)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.14)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngy5q"]
+bg_color = Color(0.24, 0.16, 0.07, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9, 0.58, 0.68)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8veou"]
+bg_color = Color(0.2, 0.13, 0.062, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.42, 0.58)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.18)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcofv"]
+bg_color = Color(0.07, 0.06, 0.052, 0.54)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.49, 0.4, 0.2)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.018, 0.012, 0.009, 0.08)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxd12"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("8_idg8k")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_83oom"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("9_2635f")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iapft"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("10_0dldq")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2comy"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("8_idg8k")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+modulate_color = Color(0.72, 0.72, 0.72, 0.62)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1wxnh"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("10_0dldq")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_28odl"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("8_idg8k")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tci5j"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("9_2635f")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tca7a"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("10_0dldq")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u6dsq"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("8_idg8k")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+modulate_color = Color(0.72, 0.72, 0.72, 0.62)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sruri"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("10_0dldq")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[node name="BattleOverlayRoot" type="Control" unique_id=337144854]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="IntroLayer" type="Control" parent="." unique_id=1562751820]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Background" type="TextureRect" parent="IntroLayer" unique_id=35752492]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Portrait" type="TextureRect" parent="IntroLayer" unique_id=1424084735]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 94.0
+offset_right = 486.0
+offset_bottom = 694.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DialoguePanel" type="PanelContainer" parent="IntroLayer" unique_id=19083321]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 512.0
+offset_right = 1144.0
+offset_bottom = 688.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_43dix")
+
+[node name="Wash" type="ColorRect" parent="IntroLayer/DialoguePanel" unique_id=1781452274]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.2, 0.12, 0.065, 0.14)
+
+[node name="Margin" type="MarginContainer" parent="IntroLayer/DialoguePanel" unique_id=1310894552]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="IntroLayer/DialoguePanel/Margin" unique_id=877311262]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Speaker" type="Label" parent="IntroLayer/DialoguePanel/Margin/VBox" unique_id=1363406096]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.48, 1)
+theme_override_font_sizes/font_size = 18
+text = "角色"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Text" type="RichTextLabel" parent="IntroLayer/DialoguePanel/Margin/VBox" unique_id=539541636]
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.92, 0.86, 0.74, 1)
+theme_override_font_sizes/normal_font_size = 15
+text = "对白内容"
+scroll_active = false
+
+[node name="Hint" type="Label" parent="IntroLayer/DialoguePanel/Margin/VBox" unique_id=628735626]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 13
+text = "点击继续"
+horizontal_alignment = 2
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="OilDecorLayer" type="Control" parent="IntroLayer/DialoguePanel" unique_id=2064813458]
+z_index = 20
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OilCornerTL" type="TextureRect" parent="IntroLayer/DialoguePanel/OilDecorLayer" unique_id=1293032786]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+offset_right = 42.0
+offset_bottom = 42.0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+
+[node name="OilCornerTR" type="TextureRect" parent="IntroLayer/DialoguePanel/OilDecorLayer" unique_id=300543067]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_bottom = 42.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_h = true
+
+[node name="OilCornerBL" type="TextureRect" parent="IntroLayer/DialoguePanel/OilDecorLayer" unique_id=629077640]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 42.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_v = true
+
+[node name="OilCornerBR" type="TextureRect" parent="IntroLayer/DialoguePanel/OilDecorLayer" unique_id=1989079716]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="OilEdgeTop" type="TextureRect" parent="IntroLayer/DialoguePanel/OilDecorLayer" unique_id=20670957]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 42.0
+offset_top = 3.0
+offset_right = -42.0
+offset_bottom = 19.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("4_hcofv")
+expand_mode = 1
+
+[node name="OilEdgeBottom" type="TextureRect" parent="IntroLayer/DialoguePanel/OilDecorLayer" unique_id=166923952]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -19.0
+offset_right = -42.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_hcofv")
+expand_mode = 1
+
+[node name="OilEdgeLeft" type="TextureRect" parent="IntroLayer/DialoguePanel/OilDecorLayer" unique_id=1497856703]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 42.0
+offset_right = 19.0
+offset_bottom = -42.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_5dmr2")
+expand_mode = 1
+
+[node name="OilEdgeRight" type="TextureRect" parent="IntroLayer/DialoguePanel/OilDecorLayer" unique_id=330579867]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = 42.0
+offset_right = -3.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_5dmr2")
+expand_mode = 1
+
+[node name="OilCrest" type="TextureRect" parent="IntroLayer/DialoguePanel/OilDecorLayer" unique_id=445142122]
+modulate = Color(1, 1, 1, 0.38)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -17.0
+offset_top = 4.0
+offset_right = 17.0
+offset_bottom = 38.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("6_idg8k")
+expand_mode = 1
+
+[node name="ResultLayer" type="Control" parent="." unique_id=1419814584]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ResultPanel" type="PanelContainer" parent="ResultLayer" unique_id=13538973]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 202.0
+offset_right = 928.0
+offset_bottom = 518.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uo4tx")
+
+[node name="Wash" type="ColorRect" parent="ResultLayer/ResultPanel" unique_id=1693697211]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.2, 0.12, 0.065, 0.14)
+
+[node name="Margin" type="MarginContainer" parent="ResultLayer/ResultPanel" unique_id=840296151]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="ResultLayer/ResultPanel/Margin" unique_id=2104033079]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Title" type="Label" parent="ResultLayer/ResultPanel/Margin/VBox" unique_id=1304576165]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.89, 0.6, 1)
+theme_override_font_sizes/font_size = 24
+text = "胜利"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Grade" type="Label" parent="ResultLayer/ResultPanel/Margin/VBox" unique_id=1681669324]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.48, 1)
+theme_override_font_sizes/font_size = 18
+text = "战斗评价 S"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Summary" type="Label" parent="ResultLayer/ResultPanel/Margin/VBox" unique_id=11695364]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 13
+text = "结果摘要"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Note" type="Label" parent="ResultLayer/ResultPanel/Margin/VBox" unique_id=1203942433]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 13
+text = "评价说明"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Exp" type="Label" parent="ResultLayer/ResultPanel/Margin/VBox" unique_id=1524861617]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 13
+text = "经验摘要"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Confirmation" type="PanelContainer" parent="ResultLayer/ResultPanel/Margin/VBox" unique_id=1033725432]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v31un")
+
+[node name="Margin" type="MarginContainer" parent="ResultLayer/ResultPanel/Margin/VBox/Confirmation" unique_id=1154678504]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="ResultLayer/ResultPanel/Margin/VBox/Confirmation/Margin" unique_id=238483295]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="ResultLayer/ResultPanel/Margin/VBox/Confirmation/Margin/VBox" unique_id=524428110]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.89, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+text = "确认标题"
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Note" type="Label" parent="ResultLayer/ResultPanel/Margin/VBox/Confirmation/Margin/VBox" unique_id=822477961]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 12
+text = "确认说明"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Buttons" type="HBoxContainer" parent="ResultLayer/ResultPanel/Margin/VBox" unique_id=883911119]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="NextBattle" type="Button" parent="ResultLayer/ResultPanel/Margin/VBox/Buttons" unique_id=1623508559]
+custom_minimum_size = Vector2(156, 36)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfqps")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngy5q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8veou")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hcofv")
+text = "前往章节地图"
+text_overrun_behavior = 4
+clip_text = true
+
+[node name="OilButtonGlow" type="TextureRect" parent="ResultLayer/ResultPanel/Margin/VBox/Buttons/NextBattle" unique_id=195911970]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_2635f")
+expand_mode = 1
+
+[node name="DeckToggle" type="Button" parent="ResultLayer/ResultPanel/Margin/VBox/Buttons" unique_id=625387547]
+custom_minimum_size = Vector2(156, 36)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfqps")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngy5q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8veou")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hcofv")
+text = "查看技能"
+text_overrun_behavior = 4
+clip_text = true
+
+[node name="OilButtonGlow" type="TextureRect" parent="ResultLayer/ResultPanel/Margin/VBox/Buttons/DeckToggle" unique_id=37175546]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 4.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_2635f")
+expand_mode = 1
+
+[node name="OilDecorLayer" type="Control" parent="ResultLayer/ResultPanel" unique_id=1366734226]
+z_index = 20
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OilCornerTL" type="TextureRect" parent="ResultLayer/ResultPanel/OilDecorLayer" unique_id=2117434764]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+offset_right = 42.0
+offset_bottom = 42.0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+
+[node name="OilCornerTR" type="TextureRect" parent="ResultLayer/ResultPanel/OilDecorLayer" unique_id=1798566646]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_bottom = 42.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_h = true
+
+[node name="OilCornerBL" type="TextureRect" parent="ResultLayer/ResultPanel/OilDecorLayer" unique_id=1599625166]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 42.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_v = true
+
+[node name="OilCornerBR" type="TextureRect" parent="ResultLayer/ResultPanel/OilDecorLayer" unique_id=671851525]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="OilEdgeTop" type="TextureRect" parent="ResultLayer/ResultPanel/OilDecorLayer" unique_id=68076243]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 42.0
+offset_top = 3.0
+offset_right = -42.0
+offset_bottom = 19.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("4_hcofv")
+expand_mode = 1
+
+[node name="OilEdgeBottom" type="TextureRect" parent="ResultLayer/ResultPanel/OilDecorLayer" unique_id=738216192]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -19.0
+offset_right = -42.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_hcofv")
+expand_mode = 1
+
+[node name="OilEdgeLeft" type="TextureRect" parent="ResultLayer/ResultPanel/OilDecorLayer" unique_id=265748958]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 42.0
+offset_right = 19.0
+offset_bottom = -42.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_5dmr2")
+expand_mode = 1
+
+[node name="OilEdgeRight" type="TextureRect" parent="ResultLayer/ResultPanel/OilDecorLayer" unique_id=1061614937]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = 42.0
+offset_right = -3.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_5dmr2")
+expand_mode = 1
+
+[node name="OilCrest" type="TextureRect" parent="ResultLayer/ResultPanel/OilDecorLayer" unique_id=1448817846]
+modulate = Color(1, 1, 1, 0.38)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -17.0
+offset_top = 4.0
+offset_right = 17.0
+offset_bottom = 38.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("6_idg8k")
+expand_mode = 1
+
+[node name="RewardLayer" type="Control" parent="." unique_id=797258895]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RewardPanel" type="PanelContainer" parent="RewardLayer" unique_id=246591789]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 176.0
+offset_right = 1038.0
+offset_bottom = 542.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uo4tx")
+
+[node name="Wash" type="ColorRect" parent="RewardLayer/RewardPanel" unique_id=1563206582]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.115, 0.07, 0.038, 0.22)
+
+[node name="Margin" type="MarginContainer" parent="RewardLayer/RewardPanel" unique_id=530375545]
+layout_mode = 2
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 28
+
+[node name="VBox" type="VBoxContainer" parent="RewardLayer/RewardPanel/Margin" unique_id=1342971151]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox" unique_id=912756107]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.89, 0.6, 1)
+theme_override_font_sizes/font_size = 24
+text = "战后领悟"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Subtitle" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox" unique_id=1743160654]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 13
+text = "选择一项战后收获，加入角色成长。"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Cards" type="HBoxContainer" parent="RewardLayer/RewardPanel/Margin/VBox" unique_id=400796322]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="RewardButton1" type="Button" parent="RewardLayer/RewardPanel/Margin/VBox/Cards" unique_id=1779956552]
+clip_contents = true
+custom_minimum_size = Vector2(292, 168)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_uxd12")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_83oom")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iapft")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2comy")
+theme_override_styles/focus = SubResource("StyleBoxTexture_1wxnh")
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="OilButtonGlow" type="TextureRect" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton1" unique_id=171352177]
+modulate = Color(1, 1, 1, 0.075)
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_2635f")
+expand_mode = 1
+
+[node name="Content" type="MarginContainer" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton1" unique_id=445725078]
+z_index = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 22.0
+offset_right = -30.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBox" type="VBoxContainer" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton1/Content" unique_id=1159968953]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Source" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton1/Content/VBox" unique_id=210120406]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_font_sizes/font_size = 11
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Title" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton1/Content/VBox" unique_id=1554455849]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.94509804, 0.74509805, 1)
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Meta" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton1/Content/VBox" unique_id=1862025598]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6117647, 0.8117647, 0.7411765, 1)
+theme_override_font_sizes/font_size = 11
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Effect" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton1/Content/VBox" unique_id=763926427]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.9372549, 0.8784314, 0.78431374, 1)
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Footer" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton1/Content/VBox" unique_id=2129829057]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.84705883, 0.7411765, 0.5254902, 1)
+theme_override_font_sizes/font_size = 11
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="AccentBrush" type="ColorRect" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton1" unique_id=1397019042]
+visible = false
+z_index = 3
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 13.0
+offset_bottom = -16.0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.84, 0.58, 0.25, 0)
+
+[node name="FooterDivider" type="ColorRect" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton1" unique_id=2046994997]
+visible = false
+z_index = 3
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -36.0
+offset_right = -20.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.92, 0.68, 0.34, 0)
+
+[node name="RewardButton2" type="Button" parent="RewardLayer/RewardPanel/Margin/VBox/Cards" unique_id=1650977732]
+clip_contents = true
+custom_minimum_size = Vector2(292, 168)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_28odl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tci5j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tca7a")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_u6dsq")
+theme_override_styles/focus = SubResource("StyleBoxTexture_sruri")
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="OilButtonGlow" type="TextureRect" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton2" unique_id=2078029034]
+modulate = Color(1, 1, 1, 0.075)
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_2635f")
+expand_mode = 1
+
+[node name="Content" type="MarginContainer" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton2" unique_id=1662235035]
+z_index = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 22.0
+offset_right = -30.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBox" type="VBoxContainer" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton2/Content" unique_id=61804026]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Source" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton2/Content/VBox" unique_id=964543440]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_font_sizes/font_size = 11
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Title" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton2/Content/VBox" unique_id=2061243653]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.94509804, 0.74509805, 1)
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Meta" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton2/Content/VBox" unique_id=1268768176]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6117647, 0.8117647, 0.7411765, 1)
+theme_override_font_sizes/font_size = 11
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Effect" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton2/Content/VBox" unique_id=1089611627]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.9372549, 0.8784314, 0.78431374, 1)
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Footer" type="Label" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton2/Content/VBox" unique_id=717396083]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.84705883, 0.7411765, 0.5254902, 1)
+theme_override_font_sizes/font_size = 11
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="AccentBrush" type="ColorRect" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton2" unique_id=1386221433]
+visible = false
+z_index = 3
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 13.0
+offset_bottom = -16.0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.84, 0.58, 0.25, 0)
+
+[node name="FooterDivider" type="ColorRect" parent="RewardLayer/RewardPanel/Margin/VBox/Cards/RewardButton2" unique_id=442998736]
+visible = false
+z_index = 3
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -36.0
+offset_right = -20.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.92, 0.68, 0.34, 0)
+
+[node name="OilDecorLayer" type="Control" parent="RewardLayer/RewardPanel" unique_id=705607946]
+z_index = 20
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OilCornerTL" type="TextureRect" parent="RewardLayer/RewardPanel/OilDecorLayer" unique_id=1269155817]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+offset_right = 42.0
+offset_bottom = 42.0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+
+[node name="OilCornerTR" type="TextureRect" parent="RewardLayer/RewardPanel/OilDecorLayer" unique_id=61059304]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_bottom = 42.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_h = true
+
+[node name="OilCornerBL" type="TextureRect" parent="RewardLayer/RewardPanel/OilDecorLayer" unique_id=902177013]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 42.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_v = true
+
+[node name="OilCornerBR" type="TextureRect" parent="RewardLayer/RewardPanel/OilDecorLayer" unique_id=1576607527]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="OilEdgeTop" type="TextureRect" parent="RewardLayer/RewardPanel/OilDecorLayer" unique_id=558210811]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 42.0
+offset_top = 3.0
+offset_right = -42.0
+offset_bottom = 19.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("4_hcofv")
+expand_mode = 1
+
+[node name="OilEdgeBottom" type="TextureRect" parent="RewardLayer/RewardPanel/OilDecorLayer" unique_id=2079064026]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -19.0
+offset_right = -42.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_hcofv")
+expand_mode = 1
+
+[node name="OilEdgeLeft" type="TextureRect" parent="RewardLayer/RewardPanel/OilDecorLayer" unique_id=1182049542]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 42.0
+offset_right = 19.0
+offset_bottom = -42.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_5dmr2")
+expand_mode = 1
+
+[node name="OilEdgeRight" type="TextureRect" parent="RewardLayer/RewardPanel/OilDecorLayer" unique_id=2110766033]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = 42.0
+offset_right = -3.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_5dmr2")
+expand_mode = 1
+
+[node name="OilCrest" type="TextureRect" parent="RewardLayer/RewardPanel/OilDecorLayer" unique_id=314201316]
+modulate = Color(1, 1, 1, 0.38)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -17.0
+offset_top = 4.0
+offset_right = 17.0
+offset_bottom = 38.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("6_idg8k")
+expand_mode = 1
+
+[node name="PromotionLayer" type="Control" parent="." unique_id=1670892041]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PromotionPanel" type="PanelContainer" parent="PromotionLayer" unique_id=305819631]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 144.0
+offset_right = 1034.0
+offset_bottom = 560.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uo4tx")
+
+[node name="Wash" type="ColorRect" parent="PromotionLayer/PromotionPanel" unique_id=932912224]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.2, 0.12, 0.065, 0.14)
+
+[node name="Margin" type="MarginContainer" parent="PromotionLayer/PromotionPanel" unique_id=847294999]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="PromotionLayer/PromotionPanel/Margin" unique_id=952408577]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="PromotionLayer/PromotionPanel/Margin/VBox" unique_id=868857543]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.89, 0.6, 1)
+theme_override_font_sizes/font_size = 24
+text = "转职选择"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="SealInfo" type="Label" parent="PromotionLayer/PromotionPanel/Margin/VBox" unique_id=303226788]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.73, 1)
+theme_override_font_sizes/font_size = 13
+text = "纹章信息"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Cards" type="GridContainer" parent="PromotionLayer/PromotionPanel/Margin/VBox" unique_id=1208772076]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="PromotionButton1" type="Button" parent="PromotionLayer/PromotionPanel/Margin/VBox/Cards" unique_id=90917461]
+custom_minimum_size = Vector2(194, 122)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfqps")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngy5q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8veou")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hcofv")
+text = "转职 1"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="PromotionButton2" type="Button" parent="PromotionLayer/PromotionPanel/Margin/VBox/Cards" unique_id=1048657826]
+custom_minimum_size = Vector2(194, 122)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfqps")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngy5q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8veou")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hcofv")
+text = "转职 2"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="PromotionButton3" type="Button" parent="PromotionLayer/PromotionPanel/Margin/VBox/Cards" unique_id=965547072]
+custom_minimum_size = Vector2(194, 122)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfqps")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngy5q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8veou")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hcofv")
+text = "转职 3"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="PromotionButton4" type="Button" parent="PromotionLayer/PromotionPanel/Margin/VBox/Cards" unique_id=685659699]
+custom_minimum_size = Vector2(194, 122)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfqps")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngy5q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8veou")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hcofv")
+text = "转职 4"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="PromotionButton5" type="Button" parent="PromotionLayer/PromotionPanel/Margin/VBox/Cards" unique_id=1991375911]
+custom_minimum_size = Vector2(194, 122)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfqps")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngy5q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8veou")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hcofv")
+text = "转职 5"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="PromotionButton6" type="Button" parent="PromotionLayer/PromotionPanel/Margin/VBox/Cards" unique_id=641873114]
+custom_minimum_size = Vector2(194, 122)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93, 0.88, 0.76, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.82, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.74, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfqps")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngy5q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8veou")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hcofv")
+text = "转职 6"
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="OilDecorLayer" type="Control" parent="PromotionLayer/PromotionPanel" unique_id=412389100]
+z_index = 20
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OilCornerTL" type="TextureRect" parent="PromotionLayer/PromotionPanel/OilDecorLayer" unique_id=1614685282]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+offset_right = 42.0
+offset_bottom = 42.0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+
+[node name="OilCornerTR" type="TextureRect" parent="PromotionLayer/PromotionPanel/OilDecorLayer" unique_id=1413632881]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_bottom = 42.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_h = true
+
+[node name="OilCornerBL" type="TextureRect" parent="PromotionLayer/PromotionPanel/OilDecorLayer" unique_id=2010735098]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_right = 42.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_v = true
+
+[node name="OilCornerBR" type="TextureRect" parent="PromotionLayer/PromotionPanel/OilDecorLayer" unique_id=642617782]
+modulate = Color(1, 1, 1, 0.48)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_8veou")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="OilEdgeTop" type="TextureRect" parent="PromotionLayer/PromotionPanel/OilDecorLayer" unique_id=655063464]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 42.0
+offset_top = 3.0
+offset_right = -42.0
+offset_bottom = 19.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("4_hcofv")
+expand_mode = 1
+
+[node name="OilEdgeBottom" type="TextureRect" parent="PromotionLayer/PromotionPanel/OilDecorLayer" unique_id=1419467427]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -19.0
+offset_right = -42.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_hcofv")
+expand_mode = 1
+
+[node name="OilEdgeLeft" type="TextureRect" parent="PromotionLayer/PromotionPanel/OilDecorLayer" unique_id=1701313582]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 42.0
+offset_right = 19.0
+offset_bottom = -42.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_5dmr2")
+expand_mode = 1
+
+[node name="OilEdgeRight" type="TextureRect" parent="PromotionLayer/PromotionPanel/OilDecorLayer" unique_id=1491361326]
+modulate = Color(1, 1, 1, 0.16)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = 42.0
+offset_right = -3.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_5dmr2")
+expand_mode = 1
+
+[node name="OilCrest" type="TextureRect" parent="PromotionLayer/PromotionPanel/OilDecorLayer" unique_id=1311535322]
+modulate = Color(1, 1, 1, 0.38)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -17.0
+offset_top = 4.0
+offset_right = 17.0
+offset_bottom = 38.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("6_idg8k")
+expand_mode = 1

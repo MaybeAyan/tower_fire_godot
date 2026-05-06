@@ -1,0 +1,30 @@
+{
+  "name": "glass_tactics",
+  "style_anchor": "HD pixel tactical battlefield with Japanese oil-paint glass HUD: dark blue-gray frosted panels, icy cyan-white glow borders, restrained gold corner accents, airy spacing, no generated text.",
+  "canvas_plan": {
+    "full_size": [1792, 1008],
+    "early_size": [1088, 624],
+    "workflow": "layered-design-generator phase 1 style batch"
+  },
+  "assets": {
+    "style_board": "res://assets/art/ui/glass_tactics/style-board-glass-tactics.png",
+    "contact_sheet": "res://assets/art/ui/glass_tactics/glass-tactics-contact-sheet.png",
+    "status_panel_frame": "res://assets/art/ui/glass_tactics/glass-status-panel-frame.png",
+    "status_panel_rich": "res://assets/art/ui/glass_tactics/glass-status-panel.png",
+    "hand_dock_frame": "res://assets/art/ui/glass_tactics/glass-hand-dock-frame.png",
+    "skill_strip": "res://assets/art/ui/glass_tactics/glass-skill-strip.png",
+    "prompt_pill": "res://assets/art/ui/glass_tactics/glass-prompt-pill.png",
+    "hp_bar": "res://assets/art/ui/glass_tactics/glass-hp-bar.png",
+    "range_move": "res://assets/art/ui/glass_tactics/glass-range-move.png",
+    "range_attack": "res://assets/art/ui/glass_tactics/glass-range-attack.png",
+    "range_danger": "res://assets/art/ui/glass_tactics/glass-range-danger.png",
+    "range_selected": "res://assets/art/ui/glass_tactics/glass-range-selected.png",
+    "selected_ring": "res://assets/art/ui/glass_tactics/glass-selected-ring.png"
+  },
+  "runtime_policy": {
+    "generated_text": "forbidden",
+    "text_rendering": "Godot draws all real text, clipped to its container",
+    "large_panel_status": "mounted behind the runtime HUD in battle via MountedUiLayer",
+    "range_overlays": "active via assets/data/art_assets.json"
+  }
+}

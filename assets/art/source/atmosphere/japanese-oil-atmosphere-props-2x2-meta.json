@@ -1,0 +1,155 @@
+{
+  "target": "asset",
+  "mode": "sheet",
+  "prompt": "",
+  "role": "",
+  "input": "E:\\godotPro\\tower_fire_godot\\assets\\art\\source\\atmosphere\\japanese-oil-atmosphere-props-2x2-magenta.png",
+  "threshold": 24,
+  "edge_threshold": 36,
+  "duration": 200,
+  "rows": 2,
+  "cols": 2,
+  "cell_size": 128,
+  "fit_scale": 0.85,
+  "trim_border": 0,
+  "edge_clean_depth": 1,
+  "align": "center",
+  "shared_scale": false,
+  "component_mode": "all",
+  "component_padding": 8,
+  "min_component_area": 1,
+  "edge_touch_margin": 2,
+  "frame_labels": [
+    "atmosphere-1",
+    "atmosphere-2",
+    "atmosphere-3",
+    "atmosphere-4"
+  ],
+  "frames": [
+    {
+      "grid": [
+        0,
+        0
+      ],
+      "source_box": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "component_mode": "all",
+      "component_count": 98,
+      "selected_component_area": null,
+      "selected_component_bbox": null,
+      "crop_bbox": [
+        93,
+        96,
+        575,
+        561
+      ],
+      "edge_touch": false,
+      "output_size": [
+        108,
+        104
+      ],
+      "paste_position": [
+        10,
+        12
+      ]
+    },
+    {
+      "grid": [
+        0,
+        1
+      ],
+      "source_box": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "component_mode": "all",
+      "component_count": 118,
+      "selected_component_area": null,
+      "selected_component_bbox": null,
+      "crop_bbox": [
+        60,
+        124,
+        542,
+        556
+      ],
+      "edge_touch": false,
+      "output_size": [
+        108,
+        97
+      ],
+      "paste_position": [
+        10,
+        15
+      ]
+    },
+    {
+      "grid": [
+        1,
+        0
+      ],
+      "source_box": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "component_mode": "all",
+      "component_count": 50,
+      "selected_component_area": null,
+      "selected_component_bbox": null,
+      "crop_bbox": [
+        148,
+        80,
+        498,
+        517
+      ],
+      "edge_touch": false,
+      "output_size": [
+        87,
+        108
+      ],
+      "paste_position": [
+        20,
+        10
+      ]
+    },
+    {
+      "grid": [
+        1,
+        1
+      ],
+      "source_box": [
+        627,
+        627,
+        1254,
+        1254
+      ],
+      "component_mode": "all",
+      "component_count": 4,
+      "selected_component_area": null,
+      "selected_component_bbox": null,
+      "crop_bbox": [
+        102,
+        124,
+        504,
+        503
+      ],
+      "edge_touch": false,
+      "output_size": [
+        108,
+        102
+      ],
+      "paste_position": [
+        10,
+        13
+      ]
+    }
+  ],
+  "edge_touch_frames": []
+}

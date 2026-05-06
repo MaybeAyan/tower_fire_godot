@@ -1,0 +1,112 @@
+{
+  "battlefield": "res://assets/art/battlefield-forest-courtyard-v2-1280x720.png",
+  "terrain_tileset": "res://assets/art/tilesets/forest-tactical-tiles-v2-8x6.png",
+  "terrain_tile_size": [64, 64],
+  "terrain_tile_regions": {
+    "floor": [0, 0, 64, 64],
+    "wall": [64, 0, 64, 64],
+    "pillar": [128, 0, 64, 64],
+    "gate": [192, 0, 64, 64],
+    "high": [0, 64, 64, 64],
+    "holy": [64, 64, 64, 64],
+    "fire": [128, 64, 64, 64],
+    "marker": [192, 64, 64, 64]
+  },
+  "tokens": {
+    "hero": "res://assets/art/tokens/astra-hero.png",
+    "faith": "res://assets/art/tokens/liora-saint.png",
+    "sword": "res://assets/art/tokens/blade-acolyte.png",
+    "mage": "res://assets/art/tokens/rune-flare.png",
+    "guard": "res://assets/art/tokens/shield-vow.png"
+  },
+  "portraits": {
+    "astra": "res://assets/art/portraits/astra-dialogue-v2.png",
+    "liora": "res://assets/art/portraits/liora-dialogue-v2.png",
+    "kael": "res://assets/art/portraits/kael-dialogue-v2.png"
+  },
+  "unit_action_sheets": {
+    "astra": "res://assets/art/unit_sheets/astra-actions.png",
+    "evelyn": "res://assets/art/unit_sheets/astra-actions.png",
+    "liora": "res://assets/art/unit_sheets/liora-actions.png",
+    "kael": "res://assets/art/unit_sheets/kael-actions.png",
+    "sword": "res://assets/art/unit_sheets/enemy-sword-actions.png",
+    "mage": "res://assets/art/unit_sheets/enemy-mage-actions.png",
+    "guard": "res://assets/art/unit_sheets/enemy-guard-actions.png",
+    "enemy_boss": "res://assets/art/unit_sheets/enemy-boss-actions.png"
+  },
+  "unit_action_sheet_meta": {
+    "astra": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "enemy", "base_facing": "left" },
+    "evelyn": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "enemy", "base_facing": "left" },
+    "liora": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "enemy", "base_facing": "left" },
+    "kael": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "enemy", "base_facing": "left" },
+    "sword": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "player", "base_facing": "left" },
+    "mage": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "player", "base_facing": "left" },
+    "guard": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "player", "base_facing": "left" },
+    "enemy_boss": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "player", "base_facing": "left" }
+  },
+  "dialogue_backgrounds": {
+    "chapter1_sanctuary_terrace": "res://assets/art/dialogue_backgrounds/chapter1_sanctuary_terrace.png",
+    "chapter2_west_corridor": "res://assets/art/dialogue_backgrounds/chapter2_west_corridor.png"
+  },
+  "cards": {
+    "strike": "res://assets/art/cards/quick-slash.png",
+    "lance": "res://assets/art/cards/radiant-lance.png",
+    "dash": "res://assets/art/cards/step-command.png",
+    "guard": "res://assets/art/cards/guard-bloom.png",
+    "engage": "res://assets/art/cards/engage-crest.png",
+    "heal": "res://assets/art/cards/mend-light.png"
+  },
+  "ui": {
+    "status_panel": "res://assets/art/ui/status-panel-frame.png",
+    "hand_dock": "res://assets/art/ui/hand-dock-frame.png",
+    "iso_status_panel": "res://assets/art/ui/isometric_tactics/iso-status-panel.png",
+    "iso_skill_dock": "res://assets/art/ui/isometric_tactics/iso-skill-dock.png",
+    "skill_card_frame": "res://assets/art/ui/pixel-sidebar-frame.png",
+    "objective_pill": "res://assets/art/ui/pixel-button-blue.png",
+    "small_button": "res://assets/art/ui/pixel-button-green.png",
+    "glass_status_panel": "res://assets/art/ui/glass_tactics/glass-status-panel-frame.png",
+    "glass_status_panel_rich": "res://assets/art/ui/glass_tactics/glass-status-panel.png",
+    "glass_hand_dock": "res://assets/art/ui/glass_tactics/glass-hand-dock-frame.png",
+    "glass_skill_strip": "res://assets/art/ui/glass_tactics/glass-skill-strip.png",
+    "glass_prompt_pill": "res://assets/art/ui/glass_tactics/glass-prompt-pill.png",
+    "glass_hp_bar": "res://assets/art/ui/glass_tactics/glass-hp-bar.png",
+    "oil_status_panel": "res://assets/art/ui/japanese_oil_hud/oil-status-panel-frame.png",
+    "oil_hand_dock": "res://assets/art/ui/japanese_oil_hud/oil-hand-dock-frame.png",
+    "oil_skill_strip": "res://assets/art/ui/japanese_oil_hud/oil-skill-strip.png",
+    "oil_prompt_pill": "res://assets/art/ui/japanese_oil_hud/oil-prompt-pill.png",
+    "oil_hp_bar": "res://assets/art/ui/japanese_oil_hud/oil-hp-bar.png",
+    "oil_safe_corner": "res://assets/art/ui/japanese_oil_safe/oil-safe-corner.png",
+    "oil_safe_edge_h": "res://assets/art/ui/japanese_oil_safe/oil-safe-edge-h.png",
+    "oil_safe_edge_v": "res://assets/art/ui/japanese_oil_safe/oil-safe-edge-v.png",
+    "oil_safe_button_glow": "res://assets/art/ui/japanese_oil_safe/oil-safe-button-glow.png",
+    "oil_safe_crest": "res://assets/art/ui/japanese_oil_safe/oil-safe-crest.png",
+    "sidebar_inner": "res://assets/art/ui/sidebar-inner-frame.png",
+    "reward_panel": "res://assets/art/ui/reward-panel-frame.png",
+    "range_floor": "res://assets/art/ui/pixel-range-floor.png",
+    "range_move": "res://assets/art/ui/glass_tactics/glass-range-move.png",
+    "range_attack": "res://assets/art/ui/glass_tactics/glass-range-attack.png",
+    "range_danger": "res://assets/art/ui/glass_tactics/glass-range-danger.png",
+    "range_selected": "res://assets/art/ui/glass_tactics/glass-range-selected.png",
+    "selected_ring": "res://assets/art/ui/glass_tactics/glass-selected-ring.png",
+    "dialogue_frame": "res://assets/art/ui/dialogue-frame-medieval-v2.png",
+    "dialogue_nameplate": "res://assets/art/ui/fe-dialogue-nameplate.png",
+    "hp_bar": "res://assets/art/ui/fe-hp-bar.png",
+    "exp_bar": "res://assets/art/ui/fe-exp-bar.png",
+    "level_badge": "res://assets/art/ui/pixel-level-badge.png",
+    "exp_gem": "res://assets/art/ui/pixel-exp-gem.png"
+  },
+  "vfx": {
+    "hit": "res://assets/art/vfx/fire-slash-sheet.png",
+    "slash": "res://assets/art/vfx/sword-slash-sheet.png",
+    "magic": "res://assets/art/vfx/arcane-burst-sheet.png",
+    "heal": "res://assets/art/vfx/heal-sigil-sheet.png",
+    "guard": "res://assets/art/vfx/guard-shield-sheet.png",
+    "death": "res://assets/art/vfx/defeat-dissolve-sheet.png"
+  },
+  "atmosphere": {
+    "sacred_crest": "res://assets/art/atmosphere/sacred-crest-gold-v1.png",
+    "rune_fire": "res://assets/art/atmosphere/rune-fire-crack-v1.png",
+    "lantern_glow": "res://assets/art/atmosphere/lantern-glow-v1.png",
+    "torn_banner": "res://assets/art/atmosphere/torn-blue-banner-v1.png"
+  }
+}

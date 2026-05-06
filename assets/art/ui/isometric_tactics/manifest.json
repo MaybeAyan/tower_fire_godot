@@ -1,0 +1,27 @@
+{
+  "style": "bright fantasy isometric tactical RPG, generated with imagegen and postprocessed for Godot",
+  "sources": {
+    "style_contact_sheet": "assets/art/source/generated-isometric-tactics-contact-sheet.png",
+    "unit_contact_sheet": "assets/art/source/generated-isometric-units-contact-sheet.png"
+  },
+  "tile_size": [
+    160,
+    112
+  ],
+  "unit_sheet": {
+    "columns": 4,
+    "rows": 6,
+    "frame_size": [
+      128,
+      128
+    ],
+    "rows_contract": [
+      "idle",
+      "move",
+      "attack",
+      "skill",
+      "hit",
+      "defeat"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+Create a clean hand-painted HD 2D tactical RPG tileset atlas for a bright fantasy academy courtyard.
+
+Output as a flat 4 columns by 2 rows tile atlas, exactly 8 square tiles, each tile equally sized.
+Tile order, left to right and top to bottom:
+1. floor: pale stone courtyard floor with subtle seams
+2. wall: cool stone boundary wall, readable as blocked terrain
+3. pillar: broken stone pillar base, blocked terrain
+4. gate: golden sacred gate threshold
+5. high: raised stone platform tile, readable elevation
+6. holy: soft mint healing sigil embedded in stone
+7. fire: red hazard sigil scorched into stone
+8. marker: blue objective marker tile
+
+Style constraints: original fantasy game asset, clean readable tactical tile shapes, no characters, no UI text, no labels, no perspective skew, no shadows outside tile bounds, no watermark.

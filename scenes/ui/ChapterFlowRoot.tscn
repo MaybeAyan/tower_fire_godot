@@ -1,0 +1,477 @@
+[gd_scene format=3 uid="uid://dlvbp0idm3vra"]
+
+[ext_resource type="Script" uid="uid://m377yp8bt4ii" path="res://scripts/ui/ChapterFlowRoot.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://bwea5j7lshtnw" path="res://assets/ui/glass_tactics_theme.tres" id="2_theme"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msjt5"]
+bg_color = Color(0.145, 0.102, 0.068, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.86, 0.67, 0.34, 0.46)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.035, 0.02, 0.012, 0.48)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vefh"]
+bg_color = Color(0.145, 0.102, 0.068, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.86, 0.67, 0.34, 0.46)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.035, 0.02, 0.012, 0.48)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nt6u3"]
+bg_color = Color(0.145, 0.102, 0.068, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.86, 0.67, 0.34, 0.46)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.035, 0.02, 0.012, 0.48)
+shadow_size = 12
+
+[node name="ChapterFlowRoot" type="Control" unique_id=28646902]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="ChapterMapLayer" type="Control" parent="." unique_id=1753400279]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapPanel" type="PanelContainer" parent="ChapterMapLayer" unique_id=2002820365]
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_msjt5")
+
+[node name="Margin" type="MarginContainer" parent="ChapterMapLayer/MapPanel" unique_id=574388844]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 28
+
+[node name="VBox" type="VBoxContainer" parent="ChapterMapLayer/MapPanel/Margin" unique_id=572227693]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="ChapterMapLayer/MapPanel/Margin/VBox" unique_id=688240320]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "章节地图"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="SubTitle" type="Label" parent="ChapterMapLayer/MapPanel/Margin/VBox" unique_id=1049566278]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "章节说明"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Nodes" type="HBoxContainer" parent="ChapterMapLayer/MapPanel/Margin/VBox" unique_id=1296767558]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="NodeButton1" type="Button" parent="ChapterMapLayer/MapPanel/Margin/VBox/Nodes" unique_id=372821546]
+custom_minimum_size = Vector2(156, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "节点 1"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="NodeButton2" type="Button" parent="ChapterMapLayer/MapPanel/Margin/VBox/Nodes" unique_id=975285661]
+custom_minimum_size = Vector2(156, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "节点 2"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="NodeButton3" type="Button" parent="ChapterMapLayer/MapPanel/Margin/VBox/Nodes" unique_id=1722276876]
+custom_minimum_size = Vector2(156, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "节点 3"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="NodeButton4" type="Button" parent="ChapterMapLayer/MapPanel/Margin/VBox/Nodes" unique_id=2073011392]
+custom_minimum_size = Vector2(156, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "节点 4"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="PartyTitle" type="Label" parent="ChapterMapLayer/MapPanel/Margin/VBox" unique_id=2140751371]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "营地整理"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="PartyRow" type="HBoxContainer" parent="ChapterMapLayer/MapPanel/Margin/VBox" unique_id=109168312]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PartyButton1" type="Button" parent="ChapterMapLayer/MapPanel/Margin/VBox/PartyRow" unique_id=1122081899]
+custom_minimum_size = Vector2(150, 74)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "角色 1"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="PartyButton2" type="Button" parent="ChapterMapLayer/MapPanel/Margin/VBox/PartyRow" unique_id=1393195943]
+custom_minimum_size = Vector2(150, 74)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "角色 2"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="PartyButton3" type="Button" parent="ChapterMapLayer/MapPanel/Margin/VBox/PartyRow" unique_id=1806348302]
+custom_minimum_size = Vector2(150, 74)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "角色 3"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="PartyButton4" type="Button" parent="ChapterMapLayer/MapPanel/Margin/VBox/PartyRow" unique_id=473836125]
+custom_minimum_size = Vector2(150, 74)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "角色 4"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="Footer" type="VBoxContainer" parent="ChapterMapLayer/MapPanel/Margin/VBox" unique_id=1439304624]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RewardSummary" type="Label" parent="ChapterMapLayer/MapPanel/Margin/VBox/Footer" unique_id=1130824035]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "技能摘要"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="PendingSummary" type="Label" parent="ChapterMapLayer/MapPanel/Margin/VBox/Footer" unique_id=1575136924]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "待生效摘要"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="CampPanel" type="PanelContainer" parent="ChapterMapLayer" unique_id=2043258237]
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7vefh")
+
+[node name="Margin" type="MarginContainer" parent="ChapterMapLayer/CampPanel" unique_id=1997876391]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 28
+
+[node name="VBox" type="VBoxContainer" parent="ChapterMapLayer/CampPanel/Margin" unique_id=571653690]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="VBoxContainer" parent="ChapterMapLayer/CampPanel/Margin/VBox" unique_id=1791216478]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MemberTitle" type="Label" parent="ChapterMapLayer/CampPanel/Margin/VBox/Header" unique_id=311270708]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "成员标题"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Passive" type="Label" parent="ChapterMapLayer/CampPanel/Margin/VBox/Header" unique_id=1546057064]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "被动说明"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Actions" type="HBoxContainer" parent="ChapterMapLayer/CampPanel/Margin/VBox/Header" unique_id=790956999]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Close" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/Header/Actions" unique_id=1179251522]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "关闭"
+alignment = 0
+text_overrun_behavior = 4
+clip_text = true
+
+[node name="Deploy" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/Header/Actions" unique_id=168728776]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "设为出战"
+alignment = 0
+text_overrun_behavior = 4
+clip_text = true
+
+[node name="Rest" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/Header/Actions" unique_id=1859002732]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "休整"
+alignment = 0
+text_overrun_behavior = 4
+clip_text = true
+
+[node name="RestSummary" type="Label" parent="ChapterMapLayer/CampPanel/Margin/VBox" unique_id=270009607]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "休整摘要"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="EventTitle" type="Label" parent="ChapterMapLayer/CampPanel/Margin/VBox" unique_id=511351925]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "营地事件"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="EventCards" type="HBoxContainer" parent="ChapterMapLayer/CampPanel/Margin/VBox" unique_id=1558840878]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="EventButton1" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/EventCards" unique_id=600923848]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "事件 1"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="EventButton2" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/EventCards" unique_id=2077474822]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "事件 2"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="EventButton3" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/EventCards" unique_id=745234547]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "事件 3"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="SkillTitle" type="Label" parent="ChapterMapLayer/CampPanel/Margin/VBox" unique_id=1591770302]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "领悟技能"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="SkillCards" type="VBoxContainer" parent="ChapterMapLayer/CampPanel/Margin/VBox" unique_id=756897706]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SkillButton1" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/SkillCards" unique_id=46430430]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "技能 1"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="SkillButton2" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/SkillCards" unique_id=23259112]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "技能 2"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="SkillButton3" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/SkillCards" unique_id=1318308089]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "技能 3"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="SkillButton4" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/SkillCards" unique_id=819163795]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "技能 4"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="SkillButton5" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/SkillCards" unique_id=1102512460]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "技能 5"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="SkillButton6" type="Button" parent="ChapterMapLayer/CampPanel/Margin/VBox/SkillCards" unique_id=1791798971]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "技能 6"
+alignment = 0
+text_overrun_behavior = 4
+autowrap_mode = 3
+clip_text = true
+
+[node name="CompleteLayer" type="Control" parent="." unique_id=1333326003]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CompletePanel" type="PanelContainer" parent="CompleteLayer" unique_id=823811419]
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nt6u3")
+
+[node name="Margin" type="MarginContainer" parent="CompleteLayer/CompletePanel" unique_id=932441394]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 28
+
+[node name="VBox" type="VBoxContainer" parent="CompleteLayer/CompletePanel/Margin" unique_id=807114812]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="CompleteLayer/CompletePanel/Margin/VBox" unique_id=2073727624]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "章节完成"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="BattleSummary" type="Label" parent="CompleteLayer/CompletePanel/Margin/VBox" unique_id=354898863]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "战斗摘要"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="RewardSummary" type="Label" parent="CompleteLayer/CompletePanel/Margin/VBox" unique_id=1951994977]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "奖励摘要"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="CampSummary" type="Label" parent="CompleteLayer/CompletePanel/Margin/VBox" unique_id=14011135]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "营地摘要"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="PromotionSummary" type="Label" parent="CompleteLayer/CompletePanel/Margin/VBox" unique_id=1715137603]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "转职摘要"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Note" type="Label" parent="CompleteLayer/CompletePanel/Margin/VBox" unique_id=408723035]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "后续说明"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="NextChapter" type="Button" parent="CompleteLayer/CompletePanel/Margin/VBox" unique_id=141079195]
+custom_minimum_size = Vector2(152, 34)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "进入下一章"
+alignment = 0
+text_overrun_behavior = 4
+clip_text = true

@@ -1,0 +1,371 @@
+{
+  "chapter": {
+    "index": 1,
+    "title": "苍纹圣庭遭袭",
+    "place": "苍纹圣庭 · 晨辉露台",
+    "enemy": "赤刃佣兵与符焰术士",
+    "dialogue_bg": "chapter1_sanctuary_terrace",
+    "encounters": ["chapter1_1", "chapter1_2"],
+    "dialogue": [
+      {"speaker": "阿斯特拉", "portrait_id": "astra", "text": "晨祷钟被刀声截断。外庭已经失守，我们只剩中庭这一道线。"},
+      {"speaker": "莉奥拉", "portrait_id": "liora", "text": "平民还在圣辉门后撤离。别让符焰术式越过喷泉。"},
+      {"speaker": "凯尔", "portrait_id": "kael", "text": "那我把盾插在中线。队长露头时，阿斯特拉，斩断他的旗。"}
+    ],
+    "camp_events": [
+      {
+        "id": "astra_review",
+        "speaker": "阿斯特拉",
+        "title": "剑与誓言",
+        "text": "阿斯特拉复盘刚才的失守点，并向同伴确认下一道防线。下一战开局力量 +1。",
+        "bonus": "power",
+        "amount": 1,
+        "icon_key": "engage",
+        "summary": "剑与誓言：阿斯特拉鼓舞队伍，下一战开局力量 +1"
+      },
+      {
+        "id": "liora_prayer",
+        "speaker": "莉奥拉",
+        "title": "撤离者的祈祷",
+        "text": "莉奥拉为仍在圣辉门后的平民祈祷，也稳定了队伍的呼吸。下一战全员生命上限 +2。",
+        "bonus": "max_hp",
+        "amount": 2,
+        "icon_key": "heal",
+        "summary": "撤离者的祈祷：莉奥拉稳住士气，下一战全员生命上限 +2"
+      },
+      {
+        "id": "kael_watch",
+        "speaker": "凯尔",
+        "title": "盾线夜话",
+        "text": "凯尔把盾靠在门廊边，低声确认每个人撤退时该站的位置。下一战全员开局格挡 +4。",
+        "bonus": "block",
+        "amount": 4,
+        "icon_key": "guard",
+        "summary": "盾线夜话：凯尔预设护卫线，下一战全员开局格挡 +4"
+      }
+    ]
+  },
+  "terrain_presets": {
+    "academy_courtyard": {
+      "wall": [[0, 0], [1, 0], [2, 0], [3, 0], [6, 0], [7, 0], [8, 0], [9, 0], [0, 1], [9, 1], [9, 2], [9, 3], [9, 4], [9, 5], [9, 6], [0, 7], [1, 7], [2, 7], [3, 7], [4, 7], [5, 7], [6, 7], [7, 7], [8, 7], [9, 7]],
+      "gate": [[4, 0], [5, 0]],
+      "pillar": [[3, 2], [3, 5], [6, 2], [6, 5]],
+      "high": [[4, 3], [5, 3]],
+      "holy": [[2, 5]],
+      "fire": [[7, 4]],
+      "marker": [[1, 6], [8, 1]]
+    }
+  },
+  "chapters": [
+    {
+      "index": 2,
+      "title": "符焰回廊追击",
+      "place": "苍纹圣庭 · 西侧回廊",
+      "enemy": "赤刃残部与符焰增援",
+      "dialogue_bg": "chapter2_west_corridor",
+      "encounters": ["chapter2_1", "chapter2_2"],
+      "dialogue": [
+        {"speaker": "阿斯特拉", "portrait_id": "astra", "text": "赤刃没有撤，是在把我们往西侧回廊引。那边还有伤员。"},
+        {"speaker": "莉奥拉", "portrait_id": "liora", "text": "旧祈祷室在回廊下方。符焰若爆开，撤离路线会被封死。"},
+        {"speaker": "凯尔", "portrait_id": "kael", "text": "窄道交给我。救下斥候，直接打穿出口，不陪他们拖。"}
+      ],
+      "camp_events": [
+        {
+          "id": "astra_flank_plan",
+          "speaker": "阿斯特拉",
+          "title": "回廊侧翼",
+          "text": "阿斯特拉在回廊地砖上划出侧翼路线，把突围交给最能跟上的人。下一战开局力量 +1。",
+          "bonus": "power",
+          "amount": 1,
+          "icon_key": "engage",
+          "summary": "回廊侧翼：阿斯特拉明确突破节奏，下一战开局力量 +1"
+        },
+        {
+          "id": "liora_ward",
+          "speaker": "莉奥拉",
+          "title": "旧祈祷室",
+          "text": "莉奥拉停在旧祈祷室前，为伤员和前线同伴补上短暂庇护。下一战全员生命上限 +3。",
+          "bonus": "max_hp",
+          "amount": 3,
+          "icon_key": "heal",
+          "summary": "旧祈祷室：莉奥拉补上庇护，下一战全员生命上限 +3"
+        },
+        {
+          "id": "kael_chokepoint",
+          "speaker": "凯尔",
+          "title": "窄道守望",
+          "text": "凯尔把最窄的转角让给自己，要求同伴只管穿过去。下一战全员开局格挡 +5。",
+          "bonus": "block",
+          "amount": 5,
+          "icon_key": "guard",
+          "summary": "窄道守望：凯尔压住追兵，下一战全员开局格挡 +5"
+        }
+      ]
+    }
+  ],
+  "battles": [
+    {
+      "id": "chapter1_1",
+      "name": "中庭试探",
+      "story_brief": "外庭残兵冲进中庭，阿斯特拉必须在圣辉门关闭前稳住第一道阵线。",
+      "objective_detail": "先用阿斯特拉号令稳定队伍，再让凯尔顶住中线、莉奥拉守住治疗格。",
+      "terrain_preset": "academy_courtyard",
+      "tilemap_scene": "res://scenes/maps/chapter1_1_tilemap.tscn",
+      "battlefield_background": "res://assets/art/battlefield-japanese-oil-courtyard-v3-1280x720.png",
+      "post_tutorial_objective": {
+        "title": "自由目标",
+        "body": "让凯尔在中线架住侍从，莉奥拉站到治疗格附近远程压制誓盾卫士。"
+      },
+      "tutorial_steps": [
+        {
+          "title": "选择单位",
+          "body": "点击阿斯特拉，先确认本回合要行动的角色。",
+          "action": "select_unit",
+          "character_id": "astra",
+          "focus": [[1, 4]]
+        },
+        {
+          "title": "移动或原地行动",
+          "body": "先点击自身格原地行动，直接进入技能选择。",
+          "action": "move_or_wait",
+          "focus": [[1, 4]],
+          "recommended_focus": [[1, 4]]
+        },
+        {
+          "title": "使用纹章技能",
+          "body": "选择底部的纹章共鸣，再点击阿斯特拉自己，为队伍积累力量。",
+          "action": "attack_or_skill",
+          "character_id": "astra",
+          "required_skill_id": "crest_resonance",
+          "recommended_skill_id": "crest_resonance",
+          "focus": [[1, 4]],
+          "recommended_focus": [[1, 4]]
+        },
+        {
+          "title": "结束我方行动",
+          "body": "继续让凯尔和莉奥拉行动。凯尔可接近侍从，莉奥拉可站到治疗格远程攻击。",
+          "action": "end_turn",
+          "focus": [[0, 5], [1, 3], [2, 5], [3, 3], [4, 3], [4, 5]],
+          "recommended_focus": [[2, 5], [3, 3], [4, 3], [4, 5]]
+        }
+      ],
+      "units": [
+        {"unit": "hero_astra", "pos": [1, 4]},
+        {"unit": "hero_liora", "pos": [0, 5]},
+        {"unit": "hero_kael", "pos": [1, 3]},
+        {"unit": "enemy_sword", "pos": [4, 3]},
+        {"unit": "enemy_guard", "pos": [4, 5]}
+      ]
+    },
+    {
+      "id": "chapter1_2",
+      "name": "赤刃队长",
+      "story_brief": "赤刃队长带术士压上喷泉高台，准备点燃圣庭门前的符焰阵。",
+      "objective_detail": "凯尔承接队长，莉奥拉避开法师2格术式，阿斯特拉找机会收掉核心目标。",
+      "terrain_preset": "academy_courtyard",
+      "tilemap_scene": "res://scenes/maps/chapter1_2_tilemap.tscn",
+      "battlefield_background": "res://assets/art/battlefield-japanese-oil-courtyard-v3-1280x720.png",
+      "post_tutorial_objective": {
+        "title": "最终目标",
+        "body": "凯尔带着格挡守住中线，莉奥拉靠近治疗格支援，阿斯特拉优先击破队长或术士。"
+      },
+      "tutorial_steps": [
+        {
+          "title": "凯尔承伤",
+          "body": "选择凯尔。盾枪卫适合站在前线，用格挡吸收队长的追击。",
+          "action": "select_unit",
+          "character_id": "kael",
+          "focus": [[1, 3]],
+          "recommended_focus": [[1, 3]]
+        },
+        {
+          "title": "进入指令阶段",
+          "body": "点击凯尔自身格原地架势；也可以前压到中线承接敌人。",
+          "action": "move_or_wait",
+          "focus": [[1, 3], [2, 3], [3, 3]],
+          "recommended_focus": [[1, 3], [3, 3]]
+        },
+        {
+          "title": "使用格挡技能",
+          "body": "选择底部的守护绽放，给凯尔叠加格挡。",
+          "action": "attack_or_skill",
+          "character_id": "kael",
+          "required_skill_id": "guard_bloom",
+          "recommended_skill_id": "guard_bloom",
+          "focus": [[1, 3], [2, 3], [3, 3]],
+          "recommended_focus": [[1, 3], [3, 3]]
+        },
+        {
+          "title": "选择莉奥拉支援",
+          "body": "选择莉奥拉。下一步让她靠近治疗格，远程压制术士并准备治疗。",
+          "action": "select_unit",
+          "character_id": "liora",
+          "focus": [[0, 5], [2, 5], [8, 2]],
+          "recommended_focus": [[0, 5], [2, 5]]
+        }
+      ],
+      "units": [
+        {"unit": "hero_astra", "pos": [1, 4]},
+        {"unit": "hero_liora", "pos": [0, 5]},
+        {"unit": "hero_kael", "pos": [1, 3]},
+        {"unit": "enemy_boss", "pos": [6, 3]},
+        {"unit": "enemy_mage", "pos": [8, 2]},
+        {"unit": "enemy_guard", "pos": [8, 5]}
+      ]
+    },
+    {
+      "id": "chapter1_3",
+      "name": "赤刃队长",
+      "terrain_preset": "academy_courtyard",
+      "tilemap_scene": "res://scenes/maps/chapter1_3_tilemap.tscn",
+      "battlefield_background": "res://assets/art/battlefield-japanese-oil-courtyard-v3-1280x720.png",
+      "post_tutorial_objective": {
+        "title": "突破队长",
+        "body": "先占住高台前沿，避开火焰格；凯尔牵制队长，莉奥拉靠治疗格支援并留意法师术式。"
+      },
+      "tutorial_steps": [
+        {
+          "title": "利用高台",
+          "body": "选择阿斯特拉，先向中庭高台前沿推进。高台会提高攻击表现和威胁范围。",
+          "action": "select_unit",
+          "character_id": "astra",
+          "focus": [[1, 4], [3, 4], [4, 3], [5, 3]],
+          "recommended_focus": [[1, 4]]
+        },
+        {
+          "title": "观察地形",
+          "body": "移动到高台前沿，同时留意治疗格与火焰格。绿色格可恢复，红色格会造成伤害。",
+          "action": "move_or_wait",
+          "character_id": "astra",
+          "focus": [[2, 5], [3, 4], [4, 3], [5, 3], [7, 4]],
+          "recommended_focus": [[3, 4]]
+        },
+        {
+          "title": "战前号令",
+          "body": "选择纹章共鸣，为队伍积累力量。接下来优先处理队长，同时避开法师2格术式。",
+          "action": "attack_or_skill",
+          "character_id": "astra",
+          "required_skill_id": "crest_resonance",
+          "recommended_skill_id": "crest_resonance",
+          "focus": [[3, 4], [7, 4], [8, 1], [8, 6]],
+          "recommended_focus": [[3, 4]]
+        },
+        {
+          "title": "莉奥拉支援",
+          "body": "选择莉奥拉。让她靠近治疗格支援前线，并持续观察法师的2格威胁。",
+          "action": "select_unit",
+          "character_id": "liora",
+          "focus": [[0, 5], [2, 5], [8, 1], [7, 4]],
+          "recommended_focus": [[0, 5], [2, 5]]
+        }
+      ],
+      "units": [
+        {"unit": "hero_astra", "pos": [1, 4]},
+        {"unit": "hero_liora", "pos": [0, 5]},
+        {"unit": "hero_kael", "pos": [1, 3]},
+        {"unit": "enemy_boss", "pos": [7, 4]},
+        {"unit": "enemy_mage", "pos": [8, 1]},
+        {"unit": "enemy_guard", "pos": [8, 6]}
+      ]
+    },
+    {
+      "id": "chapter2_1",
+      "name": "回廊追击",
+      "story_brief": "回廊斥候伊芙琳被赤刃残部截在旧祈祷室前，必须救下她再继续追击。",
+      "objective_detail": "保护伊芙琳存活；她若撑到胜利，会加入队伍。",
+      "terrain_preset": "academy_courtyard",
+      "tilemap_scene": "res://scenes/maps/chapter2_1_tilemap.tscn",
+      "battlefield_background": "res://assets/art/battlefield-japanese-oil-west-corridor-v1-1280x720.png",
+      "terrain": {
+        "floor": [[4, 3], [5, 3], [2, 5], [7, 4], [8, 1]],
+        "pillar": [[3, 2], [3, 5], [5, 2], [5, 5], [6, 2], [6, 5]],
+        "high": [[4, 2], [4, 5]],
+        "holy": [[2, 4]],
+        "fire": [[6, 4]]
+      },
+      "post_tutorial_objective": {
+        "title": "追击残部",
+        "body": "敌人被柱体分成两路。保护伊芙琳退到圣辉格附近，抢占北侧高台处理法师，避开中线火焰格。"
+      },
+      "recruitment": {
+        "character_id": "evelyn",
+        "unit": "hero_evelyn",
+        "condition": "survive",
+        "title": "回廊斥候",
+        "body": "伊芙琳守住西侧回廊。胜利时若她存活，将加入队伍。"
+      },
+      "units": [
+        {"unit": "hero_astra", "pos": [1, 4]},
+        {"unit": "hero_liora", "pos": [0, 5]},
+        {"unit": "hero_kael", "pos": [1, 3]},
+        {"unit": "hero_evelyn", "pos": [2, 4]},
+        {"unit": "enemy_sword", "pos": [6, 3]},
+        {"unit": "enemy_mage", "pos": [7, 2]},
+        {"unit": "enemy_sword", "pos": [7, 5]}
+      ]
+    },
+    {
+      "id": "chapter2_2",
+      "name": "回廊断后",
+      "objective_type": "reach",
+      "objective_title": "抵达回廊出口",
+      "reach_tiles": [[8, 4]],
+      "story_brief": "赤刃队长在出口前断后，符焰术士占住两翼，队伍要抢在爆燃前穿过回廊。",
+      "objective_detail": "可以击破敌军，也可以让任意队员抵达出口；避开中线火焰格。",
+      "terrain_preset": "academy_courtyard",
+      "tilemap_scene": "res://scenes/maps/chapter2_2_tilemap.tscn",
+      "battlefield_background": "res://assets/art/battlefield-japanese-oil-west-corridor-v1-1280x720.png",
+      "terrain": {
+        "floor": [[8, 1]],
+        "pillar": [[3, 2], [3, 5], [5, 2], [5, 5], [6, 2], [6, 5]],
+        "high": [[4, 3], [5, 3], [7, 2]],
+        "holy": [[2, 5]],
+        "fire": [[6, 3], [7, 4]],
+        "gate": [[8, 4]]
+      },
+      "post_tutorial_objective": {
+        "title": "突破断后线",
+        "body": "队长守在出口前方，术士占住两翼。夺中线高台后绕开火焰格，让任意队员抵达出口。"
+      },
+      "units": [
+        {"unit": "hero_astra", "pos": [1, 4]},
+        {"unit": "hero_liora", "pos": [0, 5]},
+        {"unit": "hero_kael", "pos": [1, 3]},
+        {"unit": "enemy_boss", "pos": [7, 3]},
+        {"unit": "enemy_guard", "pos": [6, 6]},
+        {"unit": "enemy_mage", "pos": [7, 2]},
+        {"unit": "enemy_mage", "pos": [8, 6]}
+      ]
+    },
+    {
+      "id": "chapter2_3",
+      "name": "回廊断后",
+      "objective_type": "reach",
+      "objective_title": "抵达回廊出口",
+      "reach_tiles": [[8, 4]],
+      "terrain_preset": "academy_courtyard",
+      "tilemap_scene": "res://scenes/maps/chapter2_3_tilemap.tscn",
+      "battlefield_background": "res://assets/art/battlefield-japanese-oil-west-corridor-v1-1280x720.png",
+      "terrain": {
+        "floor": [[8, 1]],
+        "pillar": [[3, 2], [3, 5], [5, 2], [5, 5], [6, 2], [6, 5]],
+        "high": [[4, 3], [5, 3], [7, 2]],
+        "holy": [[2, 5]],
+        "fire": [[6, 3], [7, 4]],
+        "gate": [[8, 4]]
+      },
+      "post_tutorial_objective": {
+        "title": "突破断后线",
+        "body": "队长守在出口前方，术士占住两翼。可以击破敌军，也可以夺中线高台后绕开火焰格，让任意队员抵达出口。"
+      },
+      "units": [
+        {"unit": "hero_astra", "pos": [1, 4]},
+        {"unit": "hero_liora", "pos": [0, 5]},
+        {"unit": "hero_kael", "pos": [1, 3]},
+        {"unit": "enemy_boss", "pos": [7, 3]},
+        {"unit": "enemy_guard", "pos": [6, 6]},
+        {"unit": "enemy_mage", "pos": [7, 2]},
+        {"unit": "enemy_mage", "pos": [8, 6]}
+      ]
+    }
+  ]
+}
