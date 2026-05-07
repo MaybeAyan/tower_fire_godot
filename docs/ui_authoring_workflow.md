@@ -4,7 +4,7 @@
 
 ## 1. 当前正式 UI 结构
 
-项目现在的正式 UI 容器位于 [Main.tscn](/E:/godotPro/tower_fire_godot/scenes/Main.tscn) 的 `UiCanvas` 下：
+项目现在的正式 UI 容器位于 [Main.tscn](/E:/godot/paa/scenes/Main.tscn) 的 `UiCanvas` 下：
 
 - `BattleHudRoot`
 - `BattleOverlayRoot`
@@ -28,7 +28,7 @@
 
 优先打开：
 
-- [UiPreview.tscn](/E:/godotPro/tower_fire_godot/scenes/UiPreview.tscn)
+- [UiPreview.tscn](/E:/godot/paa/scenes/UiPreview.tscn)
 
 这个场景专门用于 UI 预览，支持在 Inspector 里切换：
 
@@ -52,7 +52,7 @@
 
 当某个界面在预览场景里调得差不多后，再回到：
 
-- [Main.tscn](/E:/godotPro/tower_fire_godot/scenes/Main.tscn)
+- [Main.tscn](/E:/godot/paa/scenes/Main.tscn)
 
 验证真实状态切换、按钮行为和棋盘遮挡关系。
 
@@ -115,7 +115,7 @@
 每次提交前至少运行：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File E:\godotPro\tower_fire_godot\tools\check_all.ps1
+powershell -ExecutionPolicy Bypass -File E:\godot\paa\tools\check_all.ps1
 ```
 
 这个脚本会检查：
@@ -127,7 +127,7 @@ powershell -ExecutionPolicy Bypass -File E:\godotPro\tower_fire_godot\tools\chec
 如果要连同节点化 UI 工具链一起做日常自检，再运行：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File E:\godotPro\tower_fire_godot\tools\check_ui_workflow.ps1
+powershell -ExecutionPolicy Bypass -File E:\godot\paa\tools\check_ui_workflow.ps1
 ```
 
 它会额外检查：
@@ -164,3 +164,4 @@ powershell -ExecutionPolicy Bypass -File E:\godotPro\tower_fire_godot\tools\chec
 - 棋盘、地形、单位、VFX 目前不强行改成节点
 - 所有正式文本继续由引擎渲染
 - 不允许重新引入旧像素按钮和旧中世纪厚框风格
+- 所有新 UI 或信息层系统，默认先补概念图需求，再进入节点实现

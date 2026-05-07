@@ -9,7 +9,12 @@ const GRID_W := 10
 const GRID_H := 8
 const HAND_SIZE := 6
 const ACTIVE_SKILL_LIMIT := 2
-const DEPLOYMENT_LIMIT := 3
+const DEFAULT_DEPLOYMENT_LIMIT := 3
+const CHAPTER_DEPLOYMENT_LIMITS := {
+	1: 3,
+	2: 3,
+	3: 4,
+}
 const START_ENERGY := 0
 const ATTACK_EVENT_DURATION := 0.54
 const MAGE_ATTACK_EVENT_DURATION := 0.66
@@ -376,8 +381,12 @@ func deployed_count() -> int:
 	return deployed_character_ids().size()
 
 
+func deployment_limit() -> int:
+	return int(CHAPTER_DEPLOYMENT_LIMITS.get(chapter_index, DEFAULT_DEPLOYMENT_LIMIT))
+
+
 func deployment_summary() -> String:
-	return "出战 %d/%d" % [deployed_count(), DEPLOYMENT_LIMIT]
+	return "出战 %d/%d" % [deployed_count(), deployment_limit()]
 
 
 func is_character_deployed(character_id: String) -> bool:
@@ -399,7 +408,7 @@ func toggle_chapter_camp_deployment(character_id: String) -> void:
 			member["deployed"] = false
 			message = "%s调整为候补。" % member.get("name", character_id)
 		else:
-			if deployed_count() >= DEPLOYMENT_LIMIT:
+			if deployed_count() >= deployment_limit():
 				message = "出战人数已满。先将一名角色调为候补。"
 				push_log(message)
 				return
@@ -1417,7 +1426,7 @@ func _restore_surviving_party_deployment() -> void:
 		if is_party_member_fallen(member):
 			member["deployed"] = false
 			continue
-		if deployed < DEPLOYMENT_LIMIT:
+		if deployed < deployment_limit():
 			member["deployed"] = true
 			deployed += 1
 		else:
@@ -2599,18 +2608,20 @@ func _resolve_recruitment() -> void:
 	var recruitment := battle_recruitment()
 	if recruitment.is_empty():
 		return
-	if String(recruitment.get("condition", "")) != "survive":
+	var condition := String(recruitment.get("condition", ""))
+	if condition not in ["survive", "victory"]:
 		return
 	var character_id := String(recruitment.get("character_id", ""))
 	if character_id == "" or is_character_recruited(character_id):
 		return
-	var recruit_unit := _recruitment_unit(recruitment)
-	if recruit_unit.is_empty() or int(recruit_unit.get("hp", 0)) <= 0 or bool(recruit_unit.get("dead", false)):
-		return
+	if condition == "survive":
+		var recruit_unit := _recruitment_unit(recruitment)
+		if recruit_unit.is_empty() or int(recruit_unit.get("hp", 0)) <= 0 or bool(recruit_unit.get("dead", false)):
+			return
 	var member := content.build_party_member(character_id)
 	if member.is_empty():
 		return
-	member["deployed"] = false
+	member["deployed"] = bool(recruitment.get("deploy_on_join", false))
 	party.append(member)
 	recruitment_history.append({
 		"character_id": character_id,

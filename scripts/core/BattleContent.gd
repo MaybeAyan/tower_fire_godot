@@ -48,7 +48,13 @@ const CHARACTER_SKILL_POOLS := {
 	"evelyn": [
 		"swift_slash",
 	],
+	"serin": [
+		"royal_order",
+		"fleet_reposition",
+	],
 }
+
+const PLACEHOLDER_CHARACTER_SKILL_POOLS := {}
 
 const LEARNING_REWARD_POOLS := {
 	1: {
@@ -62,10 +68,12 @@ const LEARNING_REWARD_POOLS := {
 }
 
 const UNIT_LIBRARY := {
-	"hero_astra": {"id": "hero", "name": "阿斯特拉", "team": "player", "role": "hero", "hp": 30, "max_hp": 30, "atk": 4, "move_range": 3, "attack_range": 1, "weapon_name": "苍纹剑", "skill_name": "纹章斩", "intent_kind": "command"},
-	"hero_liora": {"id": "faith", "name": "莉奥拉", "team": "player", "role": "faith", "hp": 24, "max_hp": 24, "atk": 3, "move_range": 3, "attack_range": 2, "weapon_name": "圣辉杖", "skill_name": "愈光术式", "intent_kind": "mend"},
-	"hero_kael": {"id": "guard", "name": "凯尔", "team": "player", "role": "lance", "hp": 34, "max_hp": 34, "atk": 4, "move_range": 2, "attack_range": 1, "weapon_name": "誓盾枪", "skill_name": "护卫架势", "intent_kind": "hold"},
+	"hero_astra": {"id": "hero", "name": "阿斯特拉", "team": "player", "role": "hero", "character_id": "astra", "hp": 30, "max_hp": 30, "atk": 4, "move_range": 3, "attack_range": 1, "weapon_name": "苍纹剑", "skill_name": "纹章斩", "intent_kind": "command"},
+	"hero_liora": {"id": "faith", "name": "莉奥拉", "team": "player", "role": "faith", "character_id": "liora", "hp": 24, "max_hp": 24, "atk": 3, "move_range": 3, "attack_range": 2, "weapon_name": "圣辉杖", "skill_name": "愈光术式", "intent_kind": "mend"},
+	"hero_kael": {"id": "guard", "name": "凯尔", "team": "player", "role": "lance", "character_id": "kael", "hp": 34, "max_hp": 34, "atk": 4, "move_range": 2, "attack_range": 1, "weapon_name": "誓盾枪", "skill_name": "护卫架势", "intent_kind": "hold"},
 	"hero_evelyn": {"id": "hero", "name": "伊芙琳", "team": "player", "role": "scout", "character_id": "evelyn", "hp": 26, "max_hp": 26, "atk": 4, "move_range": 3, "attack_range": 2, "weapon_name": "回廊短弓", "skill_name": "斥候标记", "intent_kind": "scout"},
+	"hero_serin": {"id": "hero", "name": "赛琳", "team": "player", "role": "hero", "character_id": "serin", "hp": 28, "max_hp": 28, "atk": 3, "move_range": 3, "attack_range": 1, "weapon_name": "共鸣旗枪", "skill_name": "战歌整队", "intent_kind": "command", "class_id": "resonance_standard", "class_name": "共鸣旗手", "passive_id": "formation_resonance"},
+	"hero_serin_guest": {"id": "hero", "name": "赛琳", "team": "player", "role": "hero", "character_id": "", "placeholder_character_id": "serin", "hp": 28, "max_hp": 28, "atk": 3, "move_range": 3, "attack_range": 1, "weapon_name": "共鸣旗枪", "skill_name": "战歌整队", "intent_kind": "command", "class_id": "resonance_standard", "class_name": "共鸣旗手", "passive_id": "formation_resonance"},
 	"enemy_sword": {"id": "sword", "name": "赤刃侍从", "team": "enemy", "role": "sword", "hp": 12, "max_hp": 12, "atk": 3, "move_range": 1, "attack_range": 1, "weapon_name": "赤刃短剑", "skill_name": "追击", "intent_kind": "chase"},
 	"enemy_mage": {"id": "mage", "name": "符焰术士", "team": "enemy", "role": "mage", "hp": 10, "max_hp": 10, "atk": 4, "move_range": 1, "attack_range": 2, "weapon_name": "符焰法杖", "skill_name": "二格术式", "intent_kind": "cast"},
 	"enemy_guard": {"id": "guard", "name": "誓盾卫士", "team": "enemy", "role": "guard", "hp": 16, "max_hp": 16, "atk": 3, "move_range": 1, "attack_range": 1, "weapon_name": "誓盾锤", "skill_name": "架盾", "intent_kind": "shield"},
@@ -76,7 +84,6 @@ const ENCOUNTERS := {
 	"chapter1_1": [
 		{"unit": "hero_astra", "pos": Vector2i(1, 4)},
 		{"unit": "hero_liora", "pos": Vector2i(0, 5)},
-		{"unit": "hero_kael", "pos": Vector2i(1, 3)},
 		{"unit": "enemy_sword", "pos": Vector2i(7, 3)},
 		{"unit": "enemy_guard", "pos": Vector2i(8, 5)},
 	],
@@ -108,7 +115,7 @@ const CHAPTERS := {
 		"dialogue": [
 			{"speaker": "阿斯特拉", "portrait_id": "astra", "text": "晨祷钟被刀声截断。外庭已经失守，我们只剩中庭这一道线。"},
 			{"speaker": "莉奥拉", "portrait_id": "liora", "text": "平民还在圣辉门后撤离。别让符焰术式越过喷泉。"},
-			{"speaker": "凯尔", "portrait_id": "kael", "text": "那我把盾插在中线。队长露头时，阿斯特拉，斩断他的旗。"},
+			{"speaker": "阿斯特拉", "portrait_id": "astra", "text": "先守住撤离口。只要中庭不失，我们就还有接应同伴的机会。"},
 		],
 	}
 }
@@ -118,13 +125,17 @@ const CHARACTER_LIBRARY := {
 	"liora": {"unit": "hero_liora", "name": "莉奥拉", "class_id": "saint_mage", "level": 1, "xp": 0},
 	"kael": {"unit": "hero_kael", "name": "凯尔", "class_id": "oath_lancer", "level": 1, "xp": 0},
 	"evelyn": {"unit": "hero_evelyn", "name": "伊芙琳", "class_id": "corridor_scout", "level": 1, "xp": 0},
+	"serin": {"unit": "hero_serin", "name": "赛琳", "class_id": "resonance_standard", "level": 1, "xp": 0},
 }
+
+const PLACEHOLDER_CHARACTER_LIBRARY := {}
 
 const CLASS_LIBRARY := {
 	"lord_sword": {"name": "苍纹剑士", "tier": 1, "tags": ["sword", "command"], "passive_id": "crest_edge", "hp_bonus": 0, "atk_bonus": 0, "promotes_to": ["azure_duelist", "crest_commander"]},
 	"saint_mage": {"name": "圣辉术士", "tier": 1, "tags": ["faith"], "passive_id": "gentle_light", "hp_bonus": 0, "atk_bonus": 0, "promotes_to": ["seraphic_sage", "rune_bishop"]},
 	"oath_lancer": {"name": "誓盾枪卫", "tier": 1, "tags": ["lance"], "passive_id": "vow_guard", "hp_bonus": 0, "atk_bonus": 0, "promotes_to": ["fortress_vow", "sunlance_knight"]},
 	"corridor_scout": {"name": "回廊斥候", "tier": 1, "tags": ["sword", "command"], "passive_id": "scout_mark", "hp_bonus": 0, "atk_bonus": 0, "promotes_to": ["crest_commander", "azure_duelist"]},
+	"resonance_standard": {"name": "共鸣旗手", "tier": 1, "tags": ["command"], "passive_id": "formation_resonance", "hp_bonus": 0, "atk_bonus": 0, "promotes_to": []},
 	"azure_duelist": {"name": "苍翼决斗者", "tier": 2, "tags": ["sword", "command"], "passive_id": "duel_flash", "hp_bonus": 4, "atk_bonus": 2, "promotes_to": []},
 	"crest_commander": {"name": "纹章统领", "tier": 2, "tags": ["sword", "command"], "passive_id": "royal_tactics", "hp_bonus": 6, "atk_bonus": 1, "promotes_to": []},
 	"seraphic_sage": {"name": "圣翼贤者", "tier": 2, "tags": ["faith"], "passive_id": "seraphic_grace", "hp_bonus": 4, "atk_bonus": 1, "promotes_to": []},
@@ -144,6 +155,7 @@ const PASSIVE_LIBRARY := {
 	"iron_oath": "每场战斗开始获得4点格挡。",
 	"sunlance_drive": "枪术技能伤害+2。",
 	"scout_mark": "攻击范围为2，适合牵制与侧翼支援。",
+	"formation_resonance": "相邻至少2名友军时，普通攻击后为相邻友军提供1点力量占位增益。",
 }
 
 const LEVEL_DATA_PATH := "res://assets/data/levels/chapter1_battles.json"
@@ -214,7 +226,9 @@ func starter_deck_ids() -> Array:
 
 
 func base_skill_ids(character_id: String) -> Array:
-	return CHARACTER_SKILL_POOLS.get(character_id, []).duplicate()
+	if CHARACTER_SKILL_POOLS.has(character_id):
+		return CHARACTER_SKILL_POOLS.get(character_id, []).duplicate()
+	return PLACEHOLDER_CHARACTER_SKILL_POOLS.get(character_id, []).duplicate()
 
 
 func learning_reward_pool(chapter_index: int, battle_in_chapter: int) -> Array:
@@ -267,7 +281,7 @@ func _card_school(kind: String) -> String:
 
 func build_party() -> Array:
 	var party: Array = []
-	for character_id in ["astra", "liora", "kael"]:
+	for character_id in ["astra", "liora"]:
 		var member := build_party_member(character_id)
 		member["deployed"] = true
 		party.append(member)
@@ -276,6 +290,10 @@ func build_party() -> Array:
 
 func build_party_member(character_id: String) -> Dictionary:
 	var template: Dictionary = CHARACTER_LIBRARY.get(character_id, {})
+	if template.is_empty():
+		template = PLACEHOLDER_CHARACTER_LIBRARY.get(character_id, {})
+	if template.is_empty():
+		return {}
 	var class_data: Dictionary = CLASS_LIBRARY.get(template.get("class_id", ""), {})
 	var member := template.duplicate(true)
 	member["character_id"] = character_id
@@ -436,6 +454,10 @@ func passive_text(passive_id: String) -> String:
 	return PASSIVE_LIBRARY.get(passive_id, "")
 
 
+func has_character(character_id: String) -> bool:
+	return CHARACTER_LIBRARY.has(character_id) or PLACEHOLDER_CHARACTER_LIBRARY.has(character_id)
+
+
 func _default_camp_events() -> Array:
 	return [
 		{
@@ -518,13 +540,15 @@ func _level_atk_bonus(member: Dictionary) -> int:
 
 func _unit_matches_character(unit: Dictionary, member: Dictionary) -> bool:
 	var character_id: String = member.get("character_id", "")
-	if character_id == "astra" and unit.get("id", "") == "hero":
+	if character_id == "astra" and unit.get("name", "") == "阿斯特拉":
 		return true
 	if character_id == "liora" and unit.get("name", "") == "莉奥拉":
 		return true
 	if character_id == "kael" and unit.get("name", "") == "凯尔":
 		return true
 	if character_id == "evelyn" and unit.get("name", "") == "伊芙琳":
+		return true
+	if character_id == "serin" and unit.get("name", "") == "赛琳":
 		return true
 	return false
 

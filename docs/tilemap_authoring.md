@@ -61,7 +61,8 @@ TileSet 使用 `assets/tile_sets/forest_tactical_tileset.tres`，来源图是 `a
 如果你改了 JSON 地形并想重新生成地图场景，可以运行：
 
 ```powershell
-& 'E:\迅雷下载\Godot_v4.6.2-stable_win64.exe\Godot_v4.6.2-stable_win64_console.exe' --headless --path 'E:\godotPro\tower_fire_godot' --script 'res://tools/create_level_tilemap_scenes.gd'
+$env:GODOT_BIN='C:\Users\admin\Downloads\Godot_v4.6.2-stable_win64.exe\Godot_v4.6.2-stable_win64_console.exe'
+& $env:GODOT_BIN --headless --path 'E:\godot\paa' --script 'res://tools/create_level_tilemap_scenes.gd'
 ```
 
 重建会覆盖 `scenes/maps/*_tilemap.tscn`，所以手动画过的地图不要随便执行这条。

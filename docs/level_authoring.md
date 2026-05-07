@@ -111,7 +111,8 @@
 如果你想根据 JSON 自动生成一版 `TileMapLayer` 预览场景，可以运行：
 
 ```powershell
-& 'E:\迅雷下载\Godot_v4.6.2-stable_win64.exe\Godot_v4.6.2-stable_win64_console.exe' --headless --path 'E:\godotPro\tower_fire_godot' --script 'res://tools/create_level_tilemap_scenes.gd'
+$env:GODOT_BIN='C:\Users\admin\Downloads\Godot_v4.6.2-stable_win64.exe\Godot_v4.6.2-stable_win64_console.exe'
+& $env:GODOT_BIN --headless --path 'E:\godot\paa' --script 'res://tools/create_level_tilemap_scenes.gd'
 ```
 
 这个脚本会根据 `terrain_preset / terrain` 重新生成 `scenes/maps/*_tilemap.tscn`。
@@ -142,7 +143,8 @@
 改完关卡或角色技能池后运行：
 
 ```powershell
-& 'E:\迅雷下载\Godot_v4.6.2-stable_win64.exe\Godot_v4.6.2-stable_win64_console.exe' --headless --path 'E:\godotPro\tower_fire_godot' --script 'res://tools/validate_project_data.gd'
+$env:GODOT_BIN='C:\Users\admin\Downloads\Godot_v4.6.2-stable_win64.exe\Godot_v4.6.2-stable_win64_console.exe'
+& $env:GODOT_BIN --headless --path 'E:\godot\paa' --script 'res://tools/validate_project_data.gd'
 ```
 
 校验会检查：

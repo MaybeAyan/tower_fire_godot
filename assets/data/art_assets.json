@@ -22,13 +22,15 @@
   "portraits": {
     "astra": "res://assets/art/portraits/astra-dialogue-v2.png",
     "liora": "res://assets/art/portraits/liora-dialogue-v2.png",
-    "kael": "res://assets/art/portraits/kael-dialogue-v2.png"
+    "kael": "res://assets/art/portraits/kael-dialogue-v2.png",
+    "serin": "res://assets/art/portraits/astra-dialogue-v2.png"
   },
   "unit_action_sheets": {
     "astra": "res://assets/art/unit_sheets/astra-actions.png",
     "evelyn": "res://assets/art/unit_sheets/astra-actions.png",
     "liora": "res://assets/art/unit_sheets/liora-actions.png",
     "kael": "res://assets/art/unit_sheets/kael-actions.png",
+    "serin": "res://assets/art/unit_sheets/astra-actions.png",
     "sword": "res://assets/art/unit_sheets/enemy-sword-actions.png",
     "mage": "res://assets/art/unit_sheets/enemy-mage-actions.png",
     "guard": "res://assets/art/unit_sheets/enemy-guard-actions.png",
@@ -39,6 +41,7 @@
     "evelyn": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "enemy", "base_facing": "left" },
     "liora": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "enemy", "base_facing": "left" },
     "kael": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "enemy", "base_facing": "left" },
+    "serin": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "enemy", "base_facing": "left" },
     "sword": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "player", "base_facing": "left" },
     "mage": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "player", "base_facing": "left" },
     "guard": { "frame_size": [128, 128], "pivot": [64, 112], "mirror_mode": "player", "base_facing": "left" },

@@ -250,20 +250,24 @@ func _validate_recruitment(battle: Dictionary) -> void:
 	if not BattleContentScript.CHARACTER_LIBRARY.has(character_id):
 		_add_error("%s recruitment references unknown character: %s" % [battle_id, character_id])
 	var unit_id := String(recruitment.get("unit", ""))
-	if not BattleContentScript.UNIT_LIBRARY.has(unit_id):
+	if unit_id != "" and not BattleContentScript.UNIT_LIBRARY.has(unit_id):
 		_add_error("%s recruitment references unknown unit: %s" % [battle_id, unit_id])
 	var condition := String(recruitment.get("condition", ""))
-	if condition != "survive":
+	if condition not in ["survive", "victory"]:
 		_add_error("%s recruitment uses unsupported condition: %s" % [battle_id, condition])
 	for field in ["title", "body"]:
 		if String(recruitment.get(field, "")) == "":
 			_add_error("%s recruitment is missing %s." % [battle_id, field])
-	var found_unit := false
-	for entry in battle.get("units", []):
-		if String(entry.get("unit", "")) == unit_id:
-			found_unit = true
-	if not found_unit:
-		_add_error("%s recruitment unit is not placed in battle units: %s" % [battle_id, unit_id])
+	if condition == "survive":
+		if unit_id == "":
+			_add_error("%s recruitment with survive condition is missing unit." % battle_id)
+			return
+		var found_unit := false
+		for entry in battle.get("units", []):
+			if String(entry.get("unit", "")) == unit_id:
+				found_unit = true
+		if not found_unit:
+			_add_error("%s recruitment unit is not placed in battle units: %s" % [battle_id, unit_id])
 
 
 func _validate_tutorial_skill_id(battle_id: String, index: int, label: String, skill_id: String, character_id: String) -> void:

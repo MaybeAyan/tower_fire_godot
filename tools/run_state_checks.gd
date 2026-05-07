@@ -7,6 +7,7 @@ var errors: Array[String] = []
 
 func _init() -> void:
 	_check_personal_skill_menus()
+	_check_chapter_one_two_hero_opening()
 	_check_dialogue_background_ids()
 	_check_battlefield_background_path()
 	_check_isometric_projection_roundtrip()
@@ -43,10 +44,13 @@ func _init() -> void:
 	_check_promotion_choice_feedback()
 	_check_chapter_completion_summary()
 	_check_chapter_map_party_rows()
+	_check_chapter_one_kael_recruitment()
 	_check_chapter_one_mvp_loop()
 	_check_start_second_chapter()
+	_check_chapter_two_pacing_copy()
 	_check_recruitment_survive_join()
 	_check_reach_objective_victory()
+	_check_chapter_three_serin_recruitment_loop()
 	_print_result()
 	quit(1 if not errors.is_empty() else 0)
 
@@ -58,12 +62,32 @@ func _fresh_state():
 	return state
 
 
+func _fresh_state_with_kael():
+	var state = _fresh_state()
+	_force_win_current_battle(state)
+	state.claim_reward(0)
+	_continue_from_reward_to_chapter_map(state, "chapter 1 recruit kael")
+	state.start_next_battle()
+	return state
+
+
 func _enter_first_battle(state) -> void:
 	state.advance_intro()
 	state.advance_intro()
 	state.advance_intro()
 	if state.chapter_phase != "battle":
 		_add_error("Expected first battle after intro.")
+
+
+func _enter_chapter_one_second_battle(state) -> bool:
+	_force_win_current_battle(state)
+	state.claim_reward(0)
+	_continue_from_reward_to_chapter_map(state, "enter chapter 1 second battle")
+	state.start_next_battle()
+	if state.chapter_phase != "battle" or state.current_encounter_id != "chapter1_2":
+		_add_error("Chapter 1 did not advance to the second battle.")
+		return false
+	return true
 
 
 func _check_dialogue_background_ids() -> void:
@@ -126,14 +150,38 @@ func _check_personal_skill_menus() -> void:
 		_add_error("Panel did not switch active skill menu to Liora.")
 	if not _hand_has_exactly(state, ["mend_light"]):
 		_add_error("Liora skill menu contains another character's skill.")
-	var kael: Dictionary = _unit_by_character(state, "kael")
-	if kael.is_empty() or not state.select_unit_at(kael["pos"]):
+	var chapter_one_second_battle = _fresh_state_with_kael()
+	var kael: Dictionary = _unit_by_character(chapter_one_second_battle, "kael")
+	if kael.is_empty() or not chapter_one_second_battle.select_unit_at(kael["pos"]):
 		_add_error("Could not select Kael.")
 		return
-	if state.active_card_character_id() != "kael":
+	if chapter_one_second_battle.active_card_character_id() != "kael":
 		_add_error("Selected unit did not switch active skill menu.")
-	if not _hand_has_exactly(state, ["guard_bloom"]):
-		_add_error("Kael skill menu contains another character's skill.")
+	chapter_one_second_battle.sync_active_hand()
+	var has_guard_bloom := false
+	for skill in chapter_one_second_battle.hand:
+		var skill_id := String(skill.get("id", ""))
+		if skill_id == "guard_bloom":
+			has_guard_bloom = true
+		if not chapter_one_second_battle._unit_owns_skill(kael, skill):
+			_add_error("Kael skill menu contains another character's skill.")
+			break
+	if not has_guard_bloom:
+		_add_error("Kael skill menu should still include Guard Bloom after joining.")
+
+
+func _check_chapter_one_two_hero_opening() -> void:
+	var state = _fresh_state()
+	if not _unit_by_character(state, "kael").is_empty():
+		_add_error("Chapter 1 first battle should not include Kael.")
+	var player_units := state.get_player_units()
+	if player_units.size() != 2:
+		_add_error("Chapter 1 first battle should start with two controllable heroes.")
+	var character_ids: Array[String] = []
+	for unit in player_units:
+		character_ids.append(String(unit.get("character_id", "")))
+	if not character_ids.has("astra") or not character_ids.has("liora"):
+		_add_error("Chapter 1 first battle should start with Astra and Liora only.")
 
 
 func _check_move_undo() -> void:
@@ -201,7 +249,7 @@ func _check_normal_attack_ends_action() -> void:
 
 
 func _check_skill_ends_action() -> void:
-	var state = _fresh_state()
+	var state = _fresh_state_with_kael()
 	var kael: Dictionary = _unit_by_character(state, "kael")
 	if kael.is_empty():
 		_add_error("Kael missing for skill action check.")
@@ -221,7 +269,7 @@ func _check_skill_ends_action() -> void:
 
 
 func _check_dash_skill_ends_action() -> void:
-	var state = _fresh_state()
+	var state = _fresh_state_with_kael()
 	var kael: Dictionary = _unit_by_character(state, "kael")
 	var enemy: Dictionary = _first_enemy(state)
 	if kael.is_empty() or enemy.is_empty():
@@ -370,10 +418,7 @@ func _check_tutorial_progression() -> void:
 
 
 func _check_second_battle_tutorial_skill_gate() -> void:
-	var state = _fresh_state()
-	state.battle_in_chapter = 2
-	state.battle_index = 2
-	state._start_battle()
+	var state = _fresh_state_with_kael()
 	if state.tutorial_steps.size() != 4:
 		_add_error("Second battle tutorial should expose 4 steps.")
 		return
@@ -396,10 +441,7 @@ func _check_second_battle_tutorial_skill_gate() -> void:
 
 
 func _check_second_battle_tutorial_recommendations() -> void:
-	var state = _fresh_state()
-	state.battle_in_chapter = 2
-	state.battle_index = 2
-	state._start_battle()
+	var state = _fresh_state_with_kael()
 	var kael: Dictionary = _unit_by_character(state, "kael")
 	var liora: Dictionary = _unit_by_character(state, "liora")
 	if kael.is_empty() or liora.is_empty():
@@ -473,20 +515,20 @@ func _check_tutorial_completion_objective() -> void:
 
 func _check_first_battle_followup_pacing() -> void:
 	var state = _fresh_state()
-	var kael: Dictionary = _unit_by_character(state, "kael")
+	var astra: Dictionary = _unit_by_character(state, "astra")
 	var liora: Dictionary = _unit_by_character(state, "liora")
 	var sword := _unit_by_key(state, "enemy_sword")
 	var guard := _unit_by_key(state, "enemy_guard")
-	if kael.is_empty() or liora.is_empty() or sword.is_empty() or guard.is_empty():
+	if astra.is_empty() or liora.is_empty() or sword.is_empty() or guard.is_empty():
 		_add_error("Missing units for first battle pacing check.")
 		return
-	var kael_anchor := Vector2i(3, 3)
-	if not state.movement_tiles_for_unit(kael).has(kael_anchor):
-		_add_error("Kael cannot reach the first battle anchor tile.")
+	var astra_anchor := Vector2i(3, 3)
+	if not state.movement_tiles_for_unit(astra).has(astra_anchor):
+		_add_error("Astra cannot reach the first battle anchor tile.")
 	else:
-		kael["pos"] = kael_anchor
-		if not state.attack_tiles_for_unit(kael).has(sword["pos"]):
-			_add_error("Kael cannot attack the first battle sword after reaching the anchor tile.")
+		astra["pos"] = astra_anchor
+		if not state.attack_tiles_for_unit(astra).has(sword["pos"]):
+			_add_error("Astra cannot attack the first battle sword after reaching the anchor tile.")
 	var liora_anchor := Vector2i(2, 5)
 	if not state.movement_tiles_for_unit(liora).has(liora_anchor):
 		_add_error("Liora cannot reach the first battle holy tile.")
@@ -498,22 +540,21 @@ func _check_first_battle_followup_pacing() -> void:
 
 func _check_first_battle_enemy_prefers_frontliner() -> void:
 	var state = _fresh_state()
-	var kael: Dictionary = _unit_by_character(state, "kael")
+	var astra: Dictionary = _unit_by_character(state, "astra")
 	var liora: Dictionary = _unit_by_character(state, "liora")
 	var sword := _unit_by_key(state, "enemy_sword")
-	if kael.is_empty() or liora.is_empty() or sword.is_empty():
+	if astra.is_empty() or liora.is_empty() or sword.is_empty():
 		_add_error("Missing units for first battle enemy target check.")
 		return
-	kael["pos"] = Vector2i(3, 3)
-	kael["block"] = 10
+	astra["pos"] = Vector2i(3, 3)
 	liora["pos"] = Vector2i(2, 5)
 	var target := state.enemy_target_unit(sword)
-	if target.get("character_id", "") != "kael":
-		_add_error("First battle sword should prefer Kael after the tutorial follow-up.")
-	var before_hp := int(kael["hp"])
+	if target.get("character_id", "") != "astra":
+		_add_error("First battle sword should prefer Astra after the tutorial follow-up.")
+	var before_hp := int(astra["hp"])
 	state.run_enemy_step(sword, Rect2())
-	if int(kael["hp"]) >= before_hp and int(kael["block"]) >= 10:
-		_add_error("First battle sword did not spend its attack into Kael's guard.")
+	if int(astra["hp"]) >= before_hp:
+		_add_error("First battle sword did not spend its attack into Astra's front line.")
 
 
 func _check_terrain_effects() -> void:
@@ -609,15 +650,16 @@ func _check_enemy_terrain_movement_preferences() -> void:
 
 
 func _check_block_damage_feedback() -> void:
-	var state = _fresh_state()
+	var state = _fresh_state_with_kael()
 	var kael: Dictionary = _unit_by_character(state, "kael")
-	var sword := _unit_by_key(state, "enemy_sword")
-	if kael.is_empty() or sword.is_empty():
+	var boss := _unit_by_key(state, "enemy_boss")
+	if kael.is_empty() or boss.is_empty():
 		_add_error("Missing units for block feedback check.")
 		return
 	kael["pos"] = Vector2i(3, 3)
 	kael["block"] = 10
-	state.run_enemy_step(sword, Rect2())
+	boss["pos"] = Vector2i(4, 3)
+	state.run_enemy_step(boss, Rect2())
 	if _first_effect(state, "guard", "格挡-").is_empty():
 		_add_error("Blocked damage did not show a guard absorb effect.")
 	if _first_effect(state, "guard", "未受伤").is_empty():
@@ -627,15 +669,16 @@ func _check_block_damage_feedback() -> void:
 
 
 func _check_enemy_hover_forecast() -> void:
-	var state = _fresh_state()
+	var state = _fresh_state_with_kael()
 	var kael: Dictionary = _unit_by_character(state, "kael")
-	var sword := _unit_by_key(state, "enemy_sword")
-	if kael.is_empty() or sword.is_empty():
+	var boss := _unit_by_key(state, "enemy_boss")
+	if kael.is_empty() or boss.is_empty():
 		_add_error("Missing units for enemy hover forecast check.")
 		return
 	kael["pos"] = Vector2i(3, 3)
-	kael["block"] = 3
-	var forecast := state.enemy_hover_forecast(sword)
+	kael["block"] = 10
+	boss["pos"] = Vector2i(4, 3)
+	var forecast := state.enemy_hover_forecast(boss)
 	if forecast.is_empty():
 		_add_error("Enemy hover forecast is empty.")
 		return
@@ -643,7 +686,7 @@ func _check_enemy_hover_forecast() -> void:
 		_add_error("Enemy hover forecast target does not match AI target.")
 	if not bool(forecast.get("attacking", false)):
 		_add_error("Enemy hover forecast should show an immediate attack.")
-	if int(forecast.get("blocked", 0)) != 3 or int(forecast.get("damage", 0)) != 0:
+	if int(forecast.get("blocked", 0)) != int(boss.get("atk", 0)) or int(forecast.get("damage", 0)) != 0:
 		_add_error("Enemy hover forecast did not calculate guard absorption correctly.")
 
 
@@ -653,14 +696,11 @@ func _check_enemy_hover_terrain_intents() -> void:
 	var guard := _unit_by_key(state, "enemy_guard")
 	var astra: Dictionary = _unit_by_character(state, "astra")
 	var liora: Dictionary = _unit_by_character(state, "liora")
-	var kael: Dictionary = _unit_by_character(state, "kael")
 	if sword.is_empty() or guard.is_empty() or astra.is_empty():
 		_add_error("Missing units for enemy hover terrain intent check.")
 		return
 	if not liora.is_empty():
 		liora["hp"] = 0
-	if not kael.is_empty():
-		kael["hp"] = 0
 	state.terrain.clear()
 	guard["role"] = "mage"
 	guard["pos"] = Vector2i(2, 2)
@@ -688,7 +728,7 @@ func _check_enemy_hover_terrain_intents() -> void:
 
 
 func _check_skill_action_hints() -> void:
-	var state = _fresh_state()
+	var state = _fresh_state_with_kael()
 	var kael: Dictionary = _unit_by_character(state, "kael")
 	if kael.is_empty():
 		_add_error("Kael missing for skill action hint check.")
@@ -741,12 +781,17 @@ func _check_level_exp_progression() -> void:
 	if not state.battle_exp_summary().contains("阿斯特拉 +40"):
 		_add_error("Battle EXP summary should include grouped EXP gain.")
 
-	var support_state = _fresh_state()
+	var support_state = _fresh_state_with_kael()
 	var kael: Dictionary = _unit_by_character(support_state, "kael")
 	var kael_member := _party_member_by_character(support_state, "kael")
-	if kael.is_empty() or kael_member.is_empty():
+	if kael.is_empty():
 		_add_error("Missing Kael for support EXP check.")
 		return
+	if kael_member.is_empty():
+		kael_member = support_state.content.build_party_member("kael")
+		kael_member["deployed"] = true
+		support_state.party.append(kael_member)
+		kael_member = _party_member_by_character(support_state, "kael")
 	if not _enter_command_for_unit(support_state, kael):
 		return
 	if not _select_skill_by_id(support_state, "guard_bloom"):
@@ -788,7 +833,7 @@ func _check_vfx_impact_timing() -> void:
 
 
 func _check_skill_effect_impact_timing() -> void:
-	var state = _fresh_state()
+	var state = _fresh_state_with_kael()
 	var kael: Dictionary = _unit_by_character(state, "kael")
 	if kael.is_empty():
 		_add_error("Kael missing for skill impact timing check.")
@@ -828,7 +873,7 @@ func _check_boss_action_sheet_key() -> void:
 
 
 func _check_reward_pick_feedback() -> void:
-	var state = _fresh_state()
+	var state = _fresh_state_with_kael()
 	state.generate_reward_options()
 	if state.reward_options.is_empty():
 		_add_error("Reward options were not generated.")
@@ -923,13 +968,13 @@ func _check_active_skill_limit() -> void:
 
 
 func _check_promotion_choice_feedback() -> void:
-	var state = _fresh_state()
+	var state = _fresh_state_with_kael()
 	_grant_promotion_readiness(state)
 	state.start_promotion()
 	if state.chapter_phase != "promotion":
 		_add_error("Promotion phase did not start.")
 		return
-	if state.promotion_options.size() < 6:
+	if state.promotion_options.size() < 4:
 		_add_error("Promotion options should include two choices per hero.")
 		return
 	var option: Dictionary = state.promotion_options[0]
@@ -961,16 +1006,12 @@ func _check_promotion_choice_feedback() -> void:
 
 func _check_chapter_completion_summary() -> void:
 	var state = _fresh_state()
-	state.generate_reward_options()
-	if state.reward_options.is_empty():
-		_add_error("Reward options missing for chapter summary check.")
-		return
-	var reward: Dictionary = state.reward_options[0]
-	state.claim_reward(0)
-	if not state.chapter_reward_summary().contains(String(reward.get("title", ""))):
-		_add_error("Chapter reward summary does not include learned reward.")
 	_grant_promotion_readiness(state)
-	state.start_promotion()
+	if not _enter_chapter_one_second_battle(state):
+		return
+	_force_win_current_battle(state)
+	state.claim_reward(0)
+	state.start_next_battle()
 	if state.promotion_options.is_empty():
 		_add_error("Promotion options missing for chapter summary check.")
 		return
@@ -983,7 +1024,7 @@ func _check_chapter_completion_summary() -> void:
 	if not state.promotion_confirmation_title().contains(String(option.get("name", ""))):
 		_add_error("Chapter promotion summary does not include selected class.")
 	if state.chapter_camp_summary() != "本章未触发羁绊或训练。":
-		_add_error("Chapter camp summary should be empty when no camp action was used.")
+		_add_error("Chapter camp summary should remain empty when no chapter-map camp action was used.")
 	if not state.chapter_next_step_summary().contains("下一步"):
 		_add_error("Chapter next step summary is missing.")
 
@@ -1006,7 +1047,7 @@ func _check_chapter_map_party_rows() -> void:
 		return
 	var rows := state.chapter_map_party_rows()
 	if rows.size() != 3:
-		_add_error("Chapter map should summarize all three party members.")
+		_add_error("Chapter map should summarize Astra, Liora and newly joined Kael.")
 		return
 	var found_owner := false
 	for row in rows:
@@ -1058,46 +1099,53 @@ func _check_chapter_map_party_rows() -> void:
 	if not state.chapter_camp_pending_summary().contains("训练"):
 		_add_error("Chapter camp pending summary should include rest bonus.")
 	if state.chapter_camp_event_options().size() != 3:
-		_add_error("Chapter camp should expose three event choices.")
-	var block_event: Dictionary = state.chapter_camp_event_options()[2]
-	if int(block_event.get("amount", 0)) != 4 or String(block_event.get("icon_key", "")) != "guard":
-		_add_error("Chapter camp event data should expose amount and icon key.")
-	if state.chapter_camp_event_impact(block_event) != "全员开局格挡 +4":
-		_add_error("Chapter camp event impact text is incorrect.")
-	if not state.can_choose_chapter_camp_event(2):
-		_add_error("Chapter camp event should be available before choice.")
-	state.choose_chapter_camp_event(2)
-	if not state.camp_event_used or state.camp_event_bonus != "block":
-		_add_error("Chapter camp event should record the selected pending bonus.")
-	if state.selected_chapter_camp_event_id() != "kael_watch":
-		_add_error("Chapter camp event should expose the selected event id for UI feedback.")
-	if not state.chapter_camp_pending_summary().contains("格挡 +4"):
-		_add_error("Chapter camp pending summary should include selected event bonus.")
-	if not state.chapter_camp_summary().contains("盾线夜话"):
-		_add_error("Chapter camp summary should include the selected event title.")
+		_add_error("Chapter 1 should expose Astra, Liora and Kael camp events after Kael joins.")
+	var liora_event: Dictionary = state.chapter_camp_event_options()[1]
+	if int(liora_event.get("amount", 0)) != 2 or String(liora_event.get("icon_key", "")) != "heal":
+		_add_error("Chapter 1 camp event data should expose Liora's heal bonus.")
+	if state.chapter_camp_event_impact(liora_event) != "全员生命上限 +2":
+		_add_error("Chapter 1 camp event impact text is incorrect.")
+	if not state.can_choose_chapter_camp_event(1):
+		_add_error("Chapter 1 camp event should be available before choice.")
+	state.choose_chapter_camp_event(1)
+	if not state.camp_event_used or state.camp_event_bonus != "max_hp":
+		_add_error("Chapter 1 camp event should record the selected pending bonus.")
+	if state.selected_chapter_camp_event_id() != "liora_prayer":
+		_add_error("Chapter 1 camp event should expose the selected event id for UI feedback.")
+	if not state.chapter_camp_pending_summary().contains("生命上限 +2"):
+		_add_error("Chapter 1 camp pending summary should include selected event bonus.")
+	if not state.chapter_camp_summary().contains("撤离者的祈祷"):
+		_add_error("Chapter 1 camp summary should include the selected event title.")
 	if state.can_choose_chapter_camp_event(0):
-		_add_error("Chapter camp event should only be selectable once.")
+		_add_error("Chapter 1 camp event should only be selectable once.")
 	state.start_next_battle()
 	if state.chapter_phase != "battle" or state.player_power != 1 or state.camp_rest_bonus_pending:
-		_add_error("Chapter camp rest bonus should apply as +1 power on the next battle.")
-	for unit in state.get_player_units():
-		if int(unit.get("block", 0)) < 4:
-			_add_error("Chapter camp block event should give every player unit starting block.")
+		_add_error("Chapter 1 camp bonus should apply as +1 power on the next battle.")
 	if state.camp_event_bonus != "":
-		_add_error("Chapter camp event bonus should be consumed when the next battle starts.")
-	var owner_unit := _unit_by_character(state, owner_id)
-	if owner_unit.is_empty() or not state.select_unit_at(owner_unit.get("pos", Vector2i.ZERO)):
-		_add_error("Could not select camp reward owner in next battle.")
-	else:
-		var has_reward_in_hand := false
-		for skill in state.hand:
-			if String(skill.get("id", "")) == reward_id:
-				has_reward_in_hand = true
-		if not has_reward_in_hand:
-			_add_error("Equipped camp skill did not appear in the next battle skill menu.")
+		_add_error("Chapter 1 camp event bonus should be consumed when the next battle starts.")
+	if _unit_by_character(state, "kael").is_empty():
+		_add_error("Kael should appear in chapter 1 second battle after the first-battle join.")
 	state.close_chapter_camp()
 	if state.camp_view_open:
 		_add_error("Chapter camp detail did not close.")
+
+
+func _check_chapter_one_kael_recruitment() -> void:
+	var state = _fresh_state()
+	if state.is_character_recruited("kael"):
+		_add_error("Kael should not be recruited before chapter 1 first battle ends.")
+		return
+	_force_win_current_battle(state)
+	if not state.is_character_recruited("kael"):
+		_add_error("Kael should join after chapter 1 first battle victory.")
+	if not state.is_character_deployed("kael"):
+		_add_error("Recruited Kael should be deployed immediately for chapter 1 second battle.")
+	if not state.chapter_camp_summary().contains("招募凯尔"):
+		_add_error("Chapter 1 reward summary should record Kael joining.")
+	if not _enter_chapter_one_second_battle(state):
+		return
+	if _unit_by_character(state, "kael").is_empty():
+		_add_error("Kael should be present as a controllable ally in chapter 1 second battle.")
 
 
 func _check_chapter_one_mvp_loop() -> void:
@@ -1188,6 +1236,30 @@ func _check_start_second_chapter() -> void:
 		_add_error("Chapter 2 should start with a clean camp summary.")
 
 
+func _check_chapter_two_pacing_copy() -> void:
+	var chapter_two_first := _encounter_data_by_id("chapter2_1")
+	if chapter_two_first.is_empty():
+		_add_error("Could not load chapter2_1 encounter data for pacing copy check.")
+		return
+	var chapter_two_first_detail := String(chapter_two_first.get("objective_detail", ""))
+	if not chapter_two_first_detail.contains("凯尔已在上一章加入") or not chapter_two_first_detail.contains("伊芙琳若存活到胜利，会加入队伍。"):
+		_add_error("Chapter 2-1 objective detail should reinforce Kael's earlier join and Evelyn's rescue recruitment.")
+	var chapter_two_first_objective := String(chapter_two_first.get("post_tutorial_objective", {}).get("body", ""))
+	if not chapter_two_first_objective.contains("凯尔站住回廊窄口") or not chapter_two_first_objective.contains("阿斯特拉向前接应伊芙琳"):
+		_add_error("Chapter 2-1 post tutorial objective should describe corridor anchoring and rescue follow-up.")
+
+	var chapter_two_second := _encounter_data_by_id("chapter2_2")
+	if chapter_two_second.is_empty():
+		_add_error("Could not load chapter2_2 encounter data for pacing copy check.")
+		return
+	var chapter_two_second_detail := String(chapter_two_second.get("objective_detail", ""))
+	if not chapter_two_second_detail.contains("四人协同节奏") or not chapter_two_second_detail.contains("伊芙琳绕侧翼"):
+		_add_error("Chapter 2-2 objective detail should call out the four-unit follow-up rhythm after Evelyn's rescue.")
+	var chapter_two_second_objective := String(chapter_two_second.get("post_tutorial_objective", {}).get("body", ""))
+	if not chapter_two_second_objective.contains("凯尔先顶住队长与中线压力") or not chapter_two_second_objective.contains("利用她走侧翼或抢出口"):
+		_add_error("Chapter 2-2 post tutorial objective should explain the frontline anchor and side-route finish.")
+
+
 func _check_recruitment_survive_join() -> void:
 	var state = _fresh_state()
 	_enter_second_chapter_first_battle(state)
@@ -1260,6 +1332,130 @@ func _check_reach_objective_victory() -> void:
 		_add_error("Reach objective should trigger victory when a player reaches the exit.")
 
 
+func _check_chapter_three_serin_recruitment_loop() -> void:
+	var content = BattleStateScript.new().content
+	if not content.has_chapter(3):
+		_add_error("Chapter 3 data is missing.")
+		return
+	var chapter := content.chapter_data(3)
+	if String(chapter.get("title", "")) != "阵型协同试炼":
+		_add_error("Chapter 3 title is incorrect.")
+	var encounters: Array = chapter.get("encounters", [])
+	if encounters.size() != 2 or String(encounters[0]) != "chapter3_1" or String(encounters[1]) != "chapter3_2":
+		_add_error("Chapter 3 should expose exactly two encounter ids.")
+	var serin_member := content.build_party_member("serin")
+	if serin_member.is_empty():
+		_add_error("Serin party member was not built.")
+	else:
+		if String(serin_member.get("class_id", "")) != "resonance_standard":
+			_add_error("Serin class id is incorrect.")
+		if String(serin_member.get("passive_id", "")) != "formation_resonance":
+			_add_error("Serin passive id is incorrect.")
+		if serin_member.get("skill_ids", []).is_empty():
+			_add_error("Serin skill pool should not be empty.")
+	for encounter_id in ["chapter3_1", "chapter3_2"]:
+		var units := content.build_encounter(encounter_id, [])
+		if units.is_empty():
+			_add_error("%s did not build any units." % encounter_id)
+			continue
+		var terrain := content.battlefield_terrain(encounter_id)
+		if terrain.is_empty():
+			_add_error("%s terrain did not load from tilemap/json." % encounter_id)
+		var scene_path := content.battle_tilemap_scene_path(encounter_id)
+		if scene_path == "" or not ResourceLoader.exists(scene_path):
+			_add_error("%s tilemap scene path is missing." % encounter_id)
+	var chapter_three_first := _encounter_data_by_id("chapter3_1")
+	if chapter_three_first.is_empty():
+		_add_error("Could not load chapter3_1 encounter data.")
+	else:
+		var chapter_three_first_detail := String(chapter_three_first.get("objective_detail", ""))
+		if not chapter_three_first_detail.contains("赛琳会先以 guest 友军参战") or not chapter_three_first_detail.contains("战斗胜利后，她会正式加入队伍"):
+			_add_error("Chapter 3-1 objective detail should explain Serin's guest-to-join loop.")
+		var chapter_three_first_recruitment: Dictionary = chapter_three_first.get("recruitment", {})
+		if String(chapter_three_first_recruitment.get("character_id", "")) != "serin" or String(chapter_three_first_recruitment.get("condition", "")) != "victory":
+			_add_error("Chapter 3-1 should recruit Serin on victory.")
+	var chapter_three_second := _encounter_data_by_id("chapter3_2")
+	if chapter_three_second.is_empty():
+		_add_error("Could not load chapter3_2 encounter data.")
+	else:
+		var chapter_three_second_detail := String(chapter_three_second.get("objective_detail", ""))
+		if not chapter_three_second_detail.contains("正式队员参与部署、技能和后续状态判断"):
+			_add_error("Chapter 3-2 objective detail should describe Serin as a formal party member.")
+		if not String(chapter_three_second.get("post_tutorial_objective", {}).get("body", "")).contains("若赛琳已入队"):
+			_add_error("Chapter 3-2 post tutorial objective should mention Serin's formal follow-up role.")
+
+	var state = _fresh_state()
+	_enter_second_chapter_first_battle(state)
+	_force_win_current_battle(state)
+	state.claim_reward(0)
+	_continue_from_reward_to_chapter_map(state, "chapter 2 recruit evelyn")
+	state.open_chapter_camp("evelyn")
+	state.toggle_chapter_camp_deployment("kael")
+	state.toggle_chapter_camp_deployment("evelyn")
+	state.start_next_battle()
+	if state.current_encounter_id != "chapter2_2":
+		_add_error("Chapter 3 setup did not advance through chapter2_2.")
+		return
+	_force_win_current_battle(state)
+	state.claim_reward(0)
+	state.start_next_battle()
+	if state.chapter_phase != "promotion":
+		_add_error("Chapter 2 completion did not reach promotion before chapter 3.")
+		return
+	state.claim_promotion(0)
+	state.start_next_chapter()
+	state.advance_intro()
+	state.advance_intro()
+	state.advance_intro()
+	if state.chapter_phase != "battle" or state.current_encounter_id != "chapter3_1":
+		_add_error("Chapter 3 intro did not start chapter3_1.")
+		return
+	if state.is_character_recruited("serin"):
+		_add_error("Serin should not be formally recruited before chapter3_1 ends.")
+	var serin_guest := _unit_by_key(state, "hero_serin_guest")
+	if serin_guest.is_empty():
+		_add_error("Chapter3_1 should place Serin as a guest unit.")
+	elif String(serin_guest.get("character_id", "")) != "":
+		_add_error("Guest Serin should not yet have a formal character_id in chapter3_1.")
+	_force_win_current_battle(state)
+	if not state.is_character_recruited("serin"):
+		_add_error("Serin should join after chapter3_1 victory.")
+	if state.is_character_deployed("serin"):
+		_add_error("Recruited Serin should begin as reserve to respect chapter 3 deployment cap.")
+	if not state.chapter_camp_summary().contains("招募赛琳"):
+		_add_error("Chapter 3 reward summary should record Serin joining.")
+	state.claim_reward(0)
+	_continue_from_reward_to_chapter_map(state, "chapter 3 recruit serin")
+	var found_serin_row := false
+	for row in state.chapter_map_party_rows():
+		if String(row.get("character_id", "")) == "serin":
+			found_serin_row = true
+	if not found_serin_row:
+		_add_error("Chapter 3 chapter map should include formally recruited Serin.")
+	if state.deployment_limit() != 4:
+		_add_error("Chapter 3 deployment limit should be 4.")
+	if state.deployed_count() != 4:
+		_add_error("Chapter 3 should still have four deployed members before swapping Serin in.")
+	state.open_chapter_camp("serin")
+	state.toggle_chapter_camp_deployment("serin")
+	if state.is_character_deployed("serin"):
+		_add_error("Serin should not deploy while all chapter 3 slots are full.")
+	state.toggle_chapter_camp_deployment("liora")
+	if state.is_character_deployed("liora"):
+		_add_error("Liora should be moved to reserve for Serin deployment test.")
+	state.toggle_chapter_camp_deployment("serin")
+	if not state.is_character_deployed("serin") or state.deployed_count() != 4:
+		_add_error("Serin should be deployable after freeing one chapter 3 slot.")
+	state.start_next_battle()
+	if state.current_encounter_id != "chapter3_2":
+		_add_error("Serin recruitment loop did not advance to chapter3_2.")
+	var serin_unit := _unit_by_character(state, "serin")
+	if serin_unit.is_empty():
+		_add_error("Formally recruited Serin should appear in chapter3_2 when deployed.")
+	if not _unit_by_character(state, "liora").is_empty():
+		_add_error("Reserve Liora should not appear in chapter3_2 after Serin swap.")
+
+
 func _enter_second_chapter_first_battle(state) -> void:
 	_grant_promotion_readiness(state)
 	while state.chapter_index == 1 and state.chapter_phase == "battle":
@@ -1281,6 +1477,10 @@ func _enter_second_chapter_first_battle(state) -> void:
 func _grant_promotion_readiness(state) -> void:
 	for member in state.party:
 		member["level"] = max(10, int(member.get("level", 1)))
+	if not state.is_character_recruited("kael"):
+		var kael_member: Dictionary = state.content.build_party_member("kael")
+		kael_member["deployed"] = true
+		state.party.append(kael_member)
 	state.inventory["promotion_seal"] = 6
 
 
@@ -1390,6 +1590,19 @@ func _first_effect(state, kind: String, text_prefix: String) -> Dictionary:
 	for effect in state.effects:
 		if effect.get("kind", "") == kind and String(effect.get("text", "")).begins_with(text_prefix):
 			return effect
+	return {}
+
+
+func _encounter_data_by_id(encounter_id: String) -> Dictionary:
+	var file := FileAccess.open("res://assets/data/levels/chapter1_battles.json", FileAccess.READ)
+	if file == null:
+		return {}
+	var parsed = JSON.parse_string(file.get_as_text())
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return {}
+	for battle in parsed.get("battles", []):
+		if String(battle.get("id", "")) == encounter_id:
+			return battle
 	return {}
 
 
